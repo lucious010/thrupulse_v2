@@ -255,7 +255,7 @@ function Nav({ section, setSection, onBack, showBack }) {
       {/* Sidebar */}
       <div style={{
         position: "fixed", top: 0, right: 0, bottom: 0, zIndex: 400,
-        width: "280px", background: "#1a1a1a", borderTopLeftRadius: "24px", borderBottomLeftRadius: "24px",
+        width: "280px", background: "#1a1a1a",
         transform: menuOpen ? "translateX(0)" : "translateX(100%)",
         transition: "transform 0.3s cubic-bezier(0.4,0,0.2,1)",
         display: "flex", flexDirection: "column", padding: "28px",
@@ -297,7 +297,7 @@ function Nav({ section, setSection, onBack, showBack }) {
       }}>
         {/* Logo */}
         <div style={{ display: "flex", alignItems: "center", gap: "10px", cursor: "pointer" }} onClick={() => showBack ? onBack() : setSection("home")}>
-          <div style={{ width: "30px", height: "30px", borderRadius: "12px", background: "#1a1a1a", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ width: "30px", height: "30px", borderRadius: "6px", background: "#1a1a1a", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <span style={{ color: "#F5F0E8", fontSize: "14px", fontWeight: "900", fontFamily: "Josefin Sans" }}>T</span>
           </div>
           <span style={{ fontFamily: "Josefin Sans", fontSize: "16px", color: "#1a1a1a", letterSpacing: "-0.01em" }}>
@@ -305,28 +305,13 @@ function Nav({ section, setSection, onBack, showBack }) {
           </span>
         </div>
 
-        {/* Desktop nav tabs */}
-        {!showBack && (
-          <div className="desktop-nav" style={{ display: "flex", gap: "2px", background: "#E8E2D6", padding: "3px", borderRadius: "12px" }}>
-            {["home", "protocols", "news"].map(s => (
-              <button key={s} onClick={() => setSection(s)} style={{
-                background: section === s ? "#F5F0E8" : "transparent",
-                color: section === s ? "#1a1a1a" : "#8a8070",
-                border: "none", fontFamily: "Josefin Sans", fontSize: "12px", fontWeight: "600",
-                padding: "7px 18px", borderRadius: "12px", cursor: "pointer", textTransform: "capitalize",
-                boxShadow: section === s ? "0 1px 4px rgba(26,26,26,0.08)" : "none", transition: "all 0.2s",
-              }}>{s}</button>
-            ))}
-          </div>
-        )}
-
         {showBack && (
-          <button onClick={onBack} style={{ background: "none", border: "1px solid #D8D2C6", color: "#1a1a1a", fontFamily: "Josefin Sans", fontSize: "13px", padding: "7px 16px", borderRadius: "12px", cursor: "pointer" }}>← Back</button>
+          <button onClick={onBack} style={{ background: "none", border: "1px solid #D8D2C6", color: "#1a1a1a", fontFamily: "Josefin Sans", fontSize: "13px", padding: "7px 16px", borderRadius: "4px", cursor: "pointer" }}>← Back</button>
         )}
 
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <a href="https://x.com/Thru_pulse" target="_blank" rel="noreferrer" style={{
-            width: "36px", height: "36px", borderRadius: "12px", border: "1px solid #D8D2C6",
+            width: "36px", height: "36px", borderRadius: "6px", border: "1px solid #D8D2C6",
             background: "transparent", display: "inline-flex", alignItems: "center",
             justifyContent: "center", textDecoration: "none", transition: "all 0.15s",
           }}
@@ -337,12 +322,10 @@ function Nav({ section, setSection, onBack, showBack }) {
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.73-8.835L1.254 2.25H8.08l4.259 5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
             </svg>
           </a>
-
-          {/* Hamburger — mobile only */}
           {!showBack && (
-            <button onClick={() => setMenuOpen(true)} className="mobile-nav" style={{
-              width: "36px", height: "36px", borderRadius: "12px", border: "1px solid #D8D2C6",
-              background: "transparent", display: "none", alignItems: "center",
+            <button onClick={() => setMenuOpen(true)} style={{
+              width: "36px", height: "36px", borderRadius: "6px", border: "1px solid #D8D2C6",
+              background: "transparent", display: "inline-flex", alignItems: "center",
               justifyContent: "center", cursor: "pointer", transition: "all 0.15s",
             }}
               onMouseEnter={e => { e.currentTarget.style.background = "#1a1a1a"; e.currentTarget.style.borderColor = "#1a1a1a"; }}
@@ -398,12 +381,12 @@ function NewsCarousel({ openPost, setSection }) {
             <div style={{ fontFamily: "Josefin Sans", fontSize: "11px", letterSpacing: "0.15em", color: "#8a8070", textTransform: "uppercase", marginBottom: "8px" }}>Latest coverage</div>
             <h2 style={{ fontFamily: "Josefin Sans", fontSize: "32px", fontWeight: "normal", color: "#1a1a1a", margin: 0, letterSpacing: "-0.02em" }}>In the news</h2>
           </div>
-          <button onClick={() => setSection("news")} style={{ background: "none", border: "1px solid #D8D2C6", color: "#1a1a1a", fontFamily: "Josefin Sans", fontSize: "13px", padding: "8px 20px", borderRadius: "12px", cursor: "pointer" }}>All news →</button>
+          <button onClick={() => setSection("news")} style={{ background: "none", border: "1px solid #D8D2C6", color: "#1a1a1a", fontFamily: "Josefin Sans", fontSize: "13px", padding: "8px 20px", borderRadius: "4px", cursor: "pointer" }}>All news →</button>
         </div>
 
         {/* Big carousel card */}
         <div onClick={() => item.type === "blog" ? openPost(item) : window.open(item.url, "_blank")}
-          style={{ background: "#1a1a1a", borderRadius: "24px", padding: "52px 56px", cursor: "pointer", position: "relative", overflow: "hidden", minHeight: "300px", display: "flex", flexDirection: "column", justifyContent: "flex-end", transition: "opacity 0.2s" }}
+          style={{ background: "#1a1a1a", borderRadius: "4px", padding: "52px 56px", cursor: "pointer", position: "relative", overflow: "hidden", minHeight: "300px", display: "flex", flexDirection: "column", justifyContent: "flex-end", transition: "opacity 0.2s" }}
           onMouseEnter={e => e.currentTarget.style.opacity = "0.92"}
           onMouseLeave={e => e.currentTarget.style.opacity = "1"}
         >
@@ -414,7 +397,7 @@ function NewsCarousel({ openPost, setSection }) {
 
           <div style={{ position: "relative", zIndex: 1 }}>
             <div style={{ display: "flex", gap: "10px", alignItems: "center", marginBottom: "20px", flexWrap: "wrap" }}>
-              <span style={{ fontFamily: "Josefin Sans", fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", background: tc.bg, color: tc.text, padding: "3px 10px", borderRadius: "12px" }}>{item.tag}</span>
+              <span style={{ fontFamily: "Josefin Sans", fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", background: tc.bg, color: tc.text, padding: "3px 10px", borderRadius: "2px" }}>{item.tag}</span>
               <span style={{ fontFamily: "Josefin Sans", fontSize: "12px", color: "#8a8070" }}>{item.source} · {item.date}</span>
             </div>
             <h3 style={{ fontFamily: "Josefin Sans", fontSize: "clamp(22px, 3.5vw, 36px)", fontWeight: "normal", color: "#F5F0E8", margin: "0 0 16px", lineHeight: "1.25", letterSpacing: "-0.02em", maxWidth: "700px" }}>{item.title}</h3>
@@ -430,7 +413,7 @@ function NewsCarousel({ openPost, setSection }) {
           {NEWS.map((_, i) => (
             <button key={i} onClick={() => goTo(i)} style={{
               width: i === active ? "28px" : "8px", height: "3px", border: "none", cursor: "pointer", padding: 0,
-              background: i === active ? "#1a1a1a" : "#D8D2C6", borderRadius: "12px", transition: "all 0.3s ease",
+              background: i === active ? "#1a1a1a" : "#D8D2C6", borderRadius: "2px", transition: "all 0.3s ease",
             }} />
           ))}
         </div>
@@ -488,7 +471,7 @@ function BlogPost({ item, onBack }) {
     <div style={{ paddingTop: "80px", minHeight: "100vh", background: "#F5F0E8" }}>
       <div style={{ maxWidth: "700px", margin: "0 auto", padding: "60px 40px" }}>
         <div style={{ display: "flex", gap: "10px", alignItems: "center", marginBottom: "28px", flexWrap: "wrap" }}>
-          <span style={{ fontFamily: "Josefin Sans", fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", background: tc.bg, color: tc.text, padding: "3px 10px", borderRadius: "12px" }}>{item.tag}</span>
+          <span style={{ fontFamily: "Josefin Sans", fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", background: tc.bg, color: tc.text, padding: "3px 10px", borderRadius: "2px" }}>{item.tag}</span>
           <span style={{ fontFamily: "Josefin Sans", fontSize: "13px", color: "#8a8070" }}>{item.source} · {item.date}</span>
         </div>
         <h1 style={{ fontFamily: "Josefin Sans", fontSize: "clamp(28px, 4vw, 44px)", fontWeight: "normal", color: "#1a1a1a", letterSpacing: "-0.03em", lineHeight: "1.2", margin: "0 0 20px" }}>{item.title}</h1>
@@ -497,7 +480,7 @@ function BlogPost({ item, onBack }) {
         {loading ? (
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
             {[100, 88, 95, 72, 80, 60].map((w, i) => (
-              <div key={i} style={{ height: "14px", background: "#E8E2D6", borderRadius: "12px", width: `${w}%`, animation: "shimmer 1.4s ease infinite", animationDelay: `${i * 0.1}s` }} />
+              <div key={i} style={{ height: "14px", background: "#E8E2D6", borderRadius: "2px", width: `${w}%`, animation: "shimmer 1.4s ease infinite", animationDelay: `${i * 0.1}s` }} />
             ))}
             <p style={{ fontFamily: "Josefin Sans", fontSize: "12px", color: "#8a8070", marginTop: "8px", textAlign: "center", letterSpacing: "0.05em" }}>Loading article...</p>
           </div>
@@ -507,7 +490,7 @@ function BlogPost({ item, onBack }) {
 
         {!loading && (
           <div style={{ marginTop: "56px", paddingTop: "32px", borderTop: "1px solid #D8D2C6" }}>
-            <button onClick={onBack} style={{ background: "#1a1a1a", color: "#F5F0E8", fontFamily: "Josefin Sans", fontSize: "14px", padding: "12px 28px", border: "none", cursor: "pointer", borderRadius: "12px" }}>← Back to News</button>
+            <button onClick={onBack} style={{ background: "#1a1a1a", color: "#F5F0E8", fontFamily: "Josefin Sans", fontSize: "14px", padding: "12px 28px", border: "none", cursor: "pointer", borderRadius: "4px" }}>← Back to News</button>
           </div>
         )}
       </div>
@@ -530,7 +513,7 @@ function Home({ setSection, openPost }) {
 
         <div style={{ maxWidth: "1100px", margin: "0 auto", position: "relative", zIndex: 1 }}>
           {/* Eyebrow */}
-          <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", border: "1px solid #D8D2C6", borderRadius: "12px", padding: "6px 14px", marginBottom: "40px" }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", border: "1px solid #D8D2C6", borderRadius: "2px", padding: "6px 14px", marginBottom: "40px" }}>
             <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#C0392B" }} />
             <span style={{ fontFamily: "Josefin Sans", fontSize: "11px", color: "#8a8070", letterSpacing: "0.1em" }}>Testnet Live · Unto Labs · $14.4M Raised</span>
           </div>
@@ -545,11 +528,11 @@ function Home({ setSection, openPost }) {
           </p>
 
           <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-            <button onClick={() => setSection("protocols")} style={{ background: "#1a1a1a", color: "#F5F0E8", fontFamily: "Josefin Sans", fontSize: "14px", padding: "14px 32px", border: "none", cursor: "pointer", borderRadius: "12px", transition: "opacity 0.15s" }}
+            <button onClick={() => setSection("protocols")} style={{ background: "#1a1a1a", color: "#F5F0E8", fontFamily: "Josefin Sans", fontSize: "14px", padding: "14px 32px", border: "none", cursor: "pointer", borderRadius: "4px", transition: "opacity 0.15s" }}
               onMouseEnter={e => e.currentTarget.style.opacity = "0.8"}
               onMouseLeave={e => e.currentTarget.style.opacity = "1"}
             >Explore Ecosystem →</button>
-            <button onClick={() => setSection("news")} style={{ background: "transparent", color: "#1a1a1a", fontFamily: "Josefin Sans", fontSize: "14px", padding: "14px 32px", border: "1px solid #D8D2C6", cursor: "pointer", borderRadius: "12px", transition: "border-color 0.15s" }}
+            <button onClick={() => setSection("news")} style={{ background: "transparent", color: "#1a1a1a", fontFamily: "Josefin Sans", fontSize: "14px", padding: "14px 32px", border: "1px solid #D8D2C6", cursor: "pointer", borderRadius: "4px", transition: "border-color 0.15s" }}
               onMouseEnter={e => e.currentTarget.style.borderColor = "#1a1a1a"}
               onMouseLeave={e => e.currentTarget.style.borderColor = "#D8D2C6"}
             >Latest News</button>
@@ -558,7 +541,7 @@ function Home({ setSection, openPost }) {
       </div>
 
       {/* STATS STRIP */}
-      <div style={{ borderTop: "1px solid #D8D2C6", borderBottom: "1px solid #D8D2C6", background: "#E8E2D6", borderRadius: "20px", overflow: "hidden" }}>
+      <div style={{ borderTop: "1px solid #D8D2C6", borderBottom: "1px solid #D8D2C6", background: "#E8E2D6" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}>
           {[
             { value: 14.4, prefix: "$", suffix: "M", dec: 1, label: "Total Raised", sub: "Electric Capital + Framework" },
@@ -583,12 +566,12 @@ function Home({ setSection, openPost }) {
       <div style={{ padding: "100px 48px", background: "#F5F0E8" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <Reveal>
-            <div style={{ marginBottom: "60px", textAlign: "center" }}>
+            <div style={{ marginBottom: "60px" }}>
               <div style={{ fontFamily: "Josefin Sans", fontSize: "11px", letterSpacing: "0.15em", color: "#8a8070", textTransform: "uppercase", marginBottom: "16px" }}>What makes Thru different</div>
-              <h2 style={{ fontFamily: "Josefin Sans", fontSize: "clamp(32px, 4vw, 48px)", fontWeight: "normal", color: "#1a1a1a", letterSpacing: "-0.03em", margin: "0 auto" }}>The end of the beginning for blockchain.</h2>
+              <h2 style={{ fontFamily: "Josefin Sans", fontSize: "clamp(32px, 4vw, 48px)", fontWeight: "normal", color: "#1a1a1a", letterSpacing: "-0.03em", margin: 0, maxWidth: "600px" }}>The end of the beginning for blockchain.</h2>
             </div>
           </Reveal>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "1px", background: "#D8D2C6", border: "1px solid #D8D2C6", borderRadius: "20px", overflow: "hidden" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "1px", background: "#D8D2C6", border: "1px solid #D8D2C6" }}>
             {[
               { n: "01", title: "ThruVM", body: "A RISC-V virtual machine. Works with Rust, C, C++ — no custom compilers, no domain-specific languages." },
               { n: "02", title: "Performance Consensus", body: "Operators earn their spot with uptime and throughput, not stake. Fees race toward zero." },
@@ -596,7 +579,7 @@ function Home({ setSection, openPost }) {
               { n: "04", title: "Open Dev Experience", body: "Any language targeting RISC-V works out of the box. Mainstream adoption starts here." },
             ].map((f, i) => (
               <Reveal key={f.n} delay={i * 60}>
-                <div style={{ background: "#F5F0E8", padding: "36px 32px", position: "relative", transition: "background 0.2s", height: "100%" }}
+                <div style={{ background: "#F5F0E8", padding: "36px 32px", position: "relative", transition: "background 0.2s" }}
                   onMouseEnter={e => e.currentTarget.style.background = "#EDE8DF"}
                   onMouseLeave={e => e.currentTarget.style.background = "#F5F0E8"}
                 >
@@ -611,18 +594,14 @@ function Home({ setSection, openPost }) {
       </div>
 
       {/* MANIFESTO */}
-      <div style={{ background: "#F5F0E8", padding: "0 48px" }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 0 60px" }}>
-          <div style={{ background: "#1a1a1a", borderRadius: "24px", padding: "80px 64px", textAlign: "center" }}>
-            <Reveal>
-              <p style={{ fontFamily: "Josefin Sans", fontSize: "clamp(20px, 3.5vw, 32px)", fontWeight: "normal", color: "#F5F0E8", lineHeight: "1.6", maxWidth: "760px", margin: "0 auto 24px", letterSpacing: "-0.02em" }}>
-                "The crypto dark ages were built on isolation, distrust, and speculation. We're building for{" "}
-                <span style={{ color: "#C0392B" }}>trust, utility, and scale.</span>"
-              </p>
-              <p style={{ fontFamily: "Josefin Sans", fontSize: "12px", color: "#8a8070", letterSpacing: "0.12em", textTransform: "uppercase" }}>— Unto Labs, Introducing Thru</p>
-            </Reveal>
-          </div>
-        </div>
+      <div style={{ background: "#1a1a1a", padding: "80px 48px", textAlign: "center" }}>
+        <Reveal>
+          <p style={{ fontFamily: "Josefin Sans", fontSize: "clamp(20px, 3.5vw, 32px)", fontWeight: "normal", color: "#F5F0E8", lineHeight: "1.6", maxWidth: "760px", margin: "0 auto 24px", letterSpacing: "-0.02em" }}>
+            "The crypto dark ages were built on isolation, distrust, and speculation. We're building for{" "}
+            <span style={{ color: "#C0392B" }}>trust, utility, and scale.</span>"
+          </p>
+          <p style={{ fontFamily: "Josefin Sans", fontSize: "12px", color: "#8a8070", letterSpacing: "0.12em", textTransform: "uppercase" }}>— Unto Labs, Introducing Thru</p>
+        </Reveal>
       </div>
 
       {/* LIVE PROTOCOLS */}
@@ -634,28 +613,39 @@ function Home({ setSection, openPost }) {
                 <div style={{ fontFamily: "Josefin Sans", fontSize: "11px", letterSpacing: "0.15em", color: "#8a8070", textTransform: "uppercase", marginBottom: "8px" }}>Ecosystem</div>
                 <h2 style={{ fontFamily: "Josefin Sans", fontSize: "32px", fontWeight: "normal", color: "#1a1a1a", margin: 0, letterSpacing: "-0.02em" }}>Live protocols</h2>
               </div>
-              <button onClick={() => setSection("protocols")} style={{ background: "none", border: "1px solid #D8D2C6", color: "#1a1a1a", fontFamily: "Josefin Sans", fontSize: "13px", padding: "8px 20px", borderRadius: "12px", cursor: "pointer" }}>View all →</button>
+              <button onClick={() => setSection("protocols")} style={{ background: "none", border: "1px solid #D8D2C6", color: "#1a1a1a", fontFamily: "Josefin Sans", fontSize: "13px", padding: "8px 20px", borderRadius: "4px", cursor: "pointer" }}>View all →</button>
             </div>
           </Reveal>
-
-          {/* Logo grid */}
-          <Reveal>
-            <div style={{ background: "#fff", borderRadius: "24px", border: "1px solid #E8E2D6", padding: "48px 40px" }}>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "0px" }}>
-                {DAPPS.map((dapp, i) => (
-                  <a key={dapp.name} href={dapp.url} target="_blank" rel="noreferrer" style={{ textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", padding: "36px 24px", borderRight: i % 2 === 0 ? "1px solid #F0EBE3" : "none", borderBottom: i < DAPPS.length - 2 ? "1px solid #F0EBE3" : "none", transition: "background 0.15s", borderRadius: i === 0 ? "16px 0 0 0" : i === 1 ? "0 16px 0 0" : i === DAPPS.length - 2 ? "0 0 0 16px" : i === DAPPS.length - 1 ? "0 0 16px 0" : "0" }}
-                    onMouseEnter={e => e.currentTarget.style.background = "#F5F0E8"}
-                    onMouseLeave={e => e.currentTarget.style.background = "transparent"}
-                  >
-                    <div style={{ textAlign: "center" }}>
-                      <div style={{ fontFamily: "Josefin Sans", fontSize: "16px", fontWeight: "700", color: "#1a1a1a", letterSpacing: "0.02em", marginBottom: "4px" }}>{dapp.name}</div>
-                      <div style={{ fontFamily: "Josefin Sans", fontSize: "9px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#C0392B" }}>{dapp.category}</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "1px", background: "#D8D2C6", border: "1px solid #D8D2C6" }}>
+            {DAPPS.slice(0, 4).map((dapp, i) => {
+              const sc = STATUS_COLORS[dapp.status] || {};
+              return (
+                <Reveal key={dapp.name} delay={i * 70}>
+                  <a href={dapp.url} target="_blank" rel="noreferrer" style={{ textDecoration: "none", display: "block" }}>
+                    <div style={{ background: "#F5F0E8", padding: "32px", transition: "background 0.2s", height: "100%" }}
+                      onMouseEnter={e => e.currentTarget.style.background = "#EDE8DF"}
+                      onMouseLeave={e => e.currentTarget.style.background = "#F5F0E8"}
+                    >
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "20px" }}>
+                        <div style={{ width: "44px", height: "44px", borderRadius: "4px", background: "#1a1a1a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "20px" }}>
+                          {dapp.logo ? <span style={{ color: "#F5F0E8" }}>{dapp.logo}</span> : <span style={{ fontFamily: "Josefin Sans", fontWeight: "bold", fontSize: "13px", color: "#F5F0E8" }}>KEA</span>}
+                        </div>
+                        <span style={{ fontFamily: "Josefin Sans", fontSize: "9px", letterSpacing: "0.1em", textTransform: "uppercase", background: sc.bg, color: sc.text, padding: "3px 8px", borderRadius: "2px" }}>{dapp.status}</span>
+                      </div>
+                      <h3 style={{ fontFamily: "Josefin Sans", fontSize: "18px", fontWeight: "normal", color: "#1a1a1a", margin: "0 0 4px" }}>{dapp.name}</h3>
+                      <div style={{ fontFamily: "Josefin Sans", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#C0392B", marginBottom: "12px" }}>{dapp.category}</div>
+                      <p style={{ fontFamily: "Josefin Sans", fontSize: "13px", color: "#8a8070", lineHeight: "1.7", margin: "0 0 16px" }}>{dapp.description}</p>
+                      <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
+                        {dapp.highlights.map(h => (
+                          <span key={h} style={{ fontFamily: "Josefin Sans", fontSize: "10px", color: "#8a8070", border: "1px solid #D8D2C6", padding: "3px 8px", borderRadius: "2px" }}>{h}</span>
+                        ))}
+                      </div>
                     </div>
                   </a>
-                ))}
-              </div>
-            </div>
-          </Reveal>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -665,21 +655,13 @@ function Home({ setSection, openPost }) {
       {/* CTA */}
       <div style={{ padding: "0 48px 100px", background: "#F5F0E8" }}>
         <Reveal>
-          <div style={{ maxWidth: "680px", margin: "0 auto", textAlign: "center", border: "1px solid #D8D2C6", borderRadius: "24px", padding: "60px 40px" }}>
+          <div style={{ maxWidth: "680px", margin: "0 auto", textAlign: "center", border: "1px solid #D8D2C6", borderRadius: "4px", padding: "60px 40px" }}>
             <h2 style={{ fontFamily: "Josefin Sans", fontSize: "30px", fontWeight: "normal", color: "#1a1a1a", letterSpacing: "-0.02em", margin: "0 0 14px" }}>Ready to build on Thru?</h2>
             <p style={{ fontFamily: "Josefin Sans", fontSize: "15px", color: "#8a8070", lineHeight: "1.7", margin: "0 0 32px" }}>Deploy smart contracts with your existing Rust or C++ toolchain. No custom compilers. No domain-specific languages. Just ship.</p>
-            <a href="https://docs.thru.org/" target="_blank" rel="noreferrer"
-              style={{ display: "inline-flex", alignItems: "center", background: "#1a1a1a", borderRadius: "100px", padding: "6px 6px 6px 24px", textDecoration: "none", gap: "12px", transition: "all 0.2s" }}
-              onMouseEnter={e => { e.currentTarget.style.background = "#2a2a2a"; e.currentTarget.querySelector(".arrow-box").style.transform = "translateX(4px)"; }}
-              onMouseLeave={e => { e.currentTarget.style.background = "#1a1a1a"; e.currentTarget.querySelector(".arrow-box").style.transform = "translateX(0)"; }}
-            >
-              <span style={{ fontFamily: "Josefin Sans", fontSize: "14px", fontWeight: "600", color: "#F5F0E8", letterSpacing: "0.02em" }}>Read the Docs</span>
-              <div className="arrow-box" style={{ width: "36px", height: "36px", borderRadius: "100px", background: "#3a3a3a", display: "flex", alignItems: "center", justifyContent: "center", transition: "transform 0.2s ease" }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F5F0E8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </div>
-            </a>
+            <a href="https://docs.thru.org/" target="_blank" rel="noreferrer" style={{ display: "inline-block", background: "#1a1a1a", color: "#F5F0E8", fontFamily: "Josefin Sans", fontSize: "14px", padding: "14px 36px", borderRadius: "4px", textDecoration: "none", transition: "opacity 0.15s" }}
+              onMouseEnter={e => e.currentTarget.style.opacity = "0.8"}
+              onMouseLeave={e => e.currentTarget.style.opacity = "1"}
+            >Read the Docs →</a>
           </div>
         </Reveal>
       </div>
@@ -701,7 +683,7 @@ function Protocols() {
           </div>
         </Reveal>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "1px", background: "#D8D2C6", borderRadius: "20px", overflow: "hidden" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "1px", background: "#D8D2C6" }}>
           {DAPPS.map((dapp, i) => {
             const sc = STATUS_COLORS[dapp.status] || {};
             return (
@@ -711,19 +693,19 @@ function Protocols() {
                     onMouseEnter={e => e.currentTarget.style.background = "#EDE8DF"}
                     onMouseLeave={e => e.currentTarget.style.background = "#F5F0E8"}
                   >
-                    <div style={{ width: "48px", height: "48px", borderRadius: "12px", flexShrink: 0, background: "#1a1a1a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "22px" }}>
+                    <div style={{ width: "48px", height: "48px", borderRadius: "4px", flexShrink: 0, background: "#1a1a1a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "22px" }}>
                       {dapp.logo ? <span style={{ color: "#F5F0E8" }}>{dapp.logo}</span> : <span style={{ fontFamily: "Josefin Sans", fontWeight: "bold", fontSize: "12px", color: "#F5F0E8" }}>KEA</span>}
                     </div>
                     <div style={{ flex: 1 }}>
                       <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "6px", flexWrap: "wrap" }}>
                         <h3 style={{ fontFamily: "Josefin Sans", fontSize: "20px", fontWeight: "normal", color: "#1a1a1a", margin: 0 }}>{dapp.name}</h3>
-                        <span style={{ fontFamily: "Josefin Sans", fontSize: "9px", letterSpacing: "0.1em", textTransform: "uppercase", background: sc.bg, color: sc.text, padding: "2px 8px", borderRadius: "12px" }}>{dapp.status}</span>
+                        <span style={{ fontFamily: "Josefin Sans", fontSize: "9px", letterSpacing: "0.1em", textTransform: "uppercase", background: sc.bg, color: sc.text, padding: "2px 8px", borderRadius: "2px" }}>{dapp.status}</span>
                         <span style={{ fontFamily: "Josefin Sans", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#C0392B" }}>{dapp.category}</span>
                       </div>
                       <p style={{ fontFamily: "Josefin Sans", fontSize: "14px", color: "#8a8070", lineHeight: "1.7", margin: "0 0 14px" }}>{dapp.description}</p>
                       <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
                         {dapp.highlights.map(h => (
-                          <span key={h} style={{ fontFamily: "Josefin Sans", fontSize: "10px", color: "#8a8070", border: "1px solid #D8D2C6", padding: "3px 8px", borderRadius: "12px" }}>{h}</span>
+                          <span key={h} style={{ fontFamily: "Josefin Sans", fontSize: "10px", color: "#8a8070", border: "1px solid #D8D2C6", padding: "3px 8px", borderRadius: "2px" }}>{h}</span>
                         ))}
                       </div>
                     </div>
@@ -736,7 +718,7 @@ function Protocols() {
         </div>
 
         <Reveal delay={200}>
-          <div style={{ marginTop: "12px", background: "#E8E2D6", border: "1px solid #D8D2C6", borderRadius: "20px", padding: "36px", textAlign: "center" }}>
+          <div style={{ marginTop: "1px", background: "#E8E2D6", border: "1px solid #D8D2C6", borderTop: "none", padding: "36px", textAlign: "center" }}>
             <h3 style={{ fontFamily: "Josefin Sans", fontSize: "17px", fontWeight: "normal", color: "#1a1a1a", margin: "0 0 8px" }}>More protocols coming</h3>
             <p style={{ fontFamily: "Josefin Sans", fontSize: "13px", color: "#8a8070", margin: "0 0 12px" }}>The Thru ecosystem is early. As new protocols launch we'll add them here.</p>
             <a href="https://x.com/Thru_pulse" target="_blank" rel="noreferrer" style={{ fontFamily: "Josefin Sans", fontSize: "12px", color: "#C0392B", textDecoration: "none" }}>Follow @thruPulse for updates →</a>
@@ -772,13 +754,13 @@ function News({ openPost }) {
               color: tag === t ? "#F5F0E8" : "#8a8070",
               border: "1px solid", borderColor: tag === t ? "#1a1a1a" : "#D8D2C6",
               fontFamily: "Josefin Sans", fontSize: "11px", letterSpacing: "0.05em",
-              padding: "6px 14px", borderRadius: "12px", cursor: "pointer", transition: "all 0.15s",
+              padding: "6px 14px", borderRadius: "2px", cursor: "pointer", transition: "all 0.15s",
             }}>{t}</button>
           ))}
         </div>
 
         {/* News list */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "1px", background: "#D8D2C6", borderRadius: "20px", overflow: "hidden" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "1px", background: "#D8D2C6" }}>
           {filtered.map((item, i) => {
             const tc = TAG_COLORS[item.tag] || {};
             return (
@@ -790,8 +772,8 @@ function News({ openPost }) {
                 >
                   <div style={{ flex: 1 }}>
                     <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "10px", flexWrap: "wrap" }}>
-                      <span style={{ fontFamily: "Josefin Sans", fontSize: "9px", letterSpacing: "0.1em", textTransform: "uppercase", background: tc.bg, color: tc.text, padding: "2px 8px", borderRadius: "12px" }}>{item.tag}</span>
-                      {item.type === "blog" && <span style={{ fontFamily: "Josefin Sans", fontSize: "9px", letterSpacing: "0.1em", textTransform: "uppercase", background: "#ede9fe", color: "#5b21b6", padding: "2px 8px", borderRadius: "12px" }}>Blog</span>}
+                      <span style={{ fontFamily: "Josefin Sans", fontSize: "9px", letterSpacing: "0.1em", textTransform: "uppercase", background: tc.bg, color: tc.text, padding: "2px 8px", borderRadius: "2px" }}>{item.tag}</span>
+                      {item.type === "blog" && <span style={{ fontFamily: "Josefin Sans", fontSize: "9px", letterSpacing: "0.1em", textTransform: "uppercase", background: "#ede9fe", color: "#5b21b6", padding: "2px 8px", borderRadius: "2px" }}>Blog</span>}
                       <span style={{ fontFamily: "Josefin Sans", fontSize: "12px", color: "#8a8070" }}>{item.source} · {item.date}</span>
                     </div>
                     <h3 style={{ fontFamily: "Josefin Sans", fontSize: "18px", fontWeight: "normal", color: "#1a1a1a", margin: "0 0 6px", lineHeight: "1.35" }}>{item.title}</h3>
@@ -829,7 +811,6 @@ export default function App() {
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #F5F0E8; }
         ::-webkit-scrollbar-thumb { background: #D8D2C6; border-radius: 2px; }
-        @media (max-width: 768px) { .desktop-nav { display: none !important; } .mobile-nav { display: inline-flex !important; } }
       `}</style>
 
       <Nav
