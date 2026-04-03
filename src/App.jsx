@@ -436,7 +436,7 @@ function NewsCarousel({ openPost, setSection }) {
             </div>
             <h3 style={{ fontFamily: "DM Sans", fontSize: "clamp(22px, 3.5vw, 36px)", fontWeight: "600", color: "#F5F0E8", margin: "0 0 16px", lineHeight: "1.25", letterSpacing: "-0.02em", maxWidth: "700px", textAlign: "left" }}>{item.title}</h3>
             <p style={{ fontFamily: "DM Sans", fontSize: "15px", color: "#8a8070", lineHeight: "1.7", margin: "0 0 28px", maxWidth: "580px", textAlign: "left" }}>{item.excerpt}</p>
-            <span style={{ fontFamily: "DM Sans", fontSize: "13px", color: "#C0392B", letterSpacing: "0.05em" }}>
+            <span style={{ fontFamily: "DM Sans", fontSize: "13px", color: "#C0392B", letterSpacing: "0.05em", display: "block", textAlign: "left" }}>
               {item.type === "blog" ? "Read article →" : "Read more →"}
             </span>
           </div>
