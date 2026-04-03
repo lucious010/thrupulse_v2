@@ -434,8 +434,8 @@ function NewsCarousel({ openPost, setSection }) {
               <span style={{ fontFamily: "DM Sans", fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", background: tc.bg, color: tc.text, padding: "3px 10px", borderRadius: "12px" }}>{item.tag}</span>
               <span style={{ fontFamily: "DM Sans", fontSize: "12px", color: "#8a8070" }}>{item.source} · {item.date}</span>
             </div>
-            <h3 style={{ fontFamily: "DM Sans", fontSize: "clamp(22px, 3.5vw, 36px)", fontWeight: "normal", color: "#F5F0E8", margin: "0 0 16px", lineHeight: "1.25", letterSpacing: "-0.02em", maxWidth: "700px" }}>{item.title}</h3>
-            <p style={{ fontFamily: "DM Sans", fontSize: "15px", color: "#8a8070", lineHeight: "1.7", margin: "0 0 28px", maxWidth: "580px" }}>{item.excerpt}</p>
+            <h3 style={{ fontFamily: "DM Sans", fontSize: "clamp(22px, 3.5vw, 36px)", fontWeight: "600", color: "#F5F0E8", margin: "0 0 16px", lineHeight: "1.25", letterSpacing: "-0.02em", maxWidth: "700px", textAlign: "left" }}>{item.title}</h3>
+            <p style={{ fontFamily: "DM Sans", fontSize: "15px", color: "#8a8070", lineHeight: "1.7", margin: "0 0 28px", maxWidth: "580px", textAlign: "left" }}>{item.excerpt}</p>
             <span style={{ fontFamily: "DM Sans", fontSize: "13px", color: "#C0392B", letterSpacing: "0.05em" }}>
               {item.type === "blog" ? "Read article →" : "Read more →"}
             </span>
