@@ -1012,11 +1012,11 @@ function Guides() {
       <div style={{ maxWidth: "860px", margin: "0 auto", padding: "60px 48px 120px" }}>
 
         {/* Header */}
-        <div style={{ marginBottom: "56px" }}>
+        <div style={{ marginBottom: "56px", textAlign: "center" }}>
           <div style={{ fontFamily: "DM Sans", fontSize: "11px", letterSpacing: "0.15em", color: "#8a8070", textTransform: "uppercase", marginBottom: "12px" }}>Developer Guides</div>
           <h1 style={{ fontFamily: "DM Sans", fontSize: "40px", fontWeight: "600", color: "#1a1a1a", letterSpacing: "-0.03em", margin: "0 0 12px" }}>Getting Started with Thru</h1>
-          <p style={{ fontFamily: "DM Sans", fontSize: "16px", color: "#8a8070", lineHeight: "1.7", margin: "0 0 24px", maxWidth: "560px" }}>Install the CLI, connect to the alphanet, and fund your first on-chain account.</p>
-          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+          <p style={{ fontFamily: "DM Sans", fontSize: "16px", color: "#8a8070", lineHeight: "1.7", margin: "0 auto 24px", maxWidth: "560px" }}>Install the CLI, connect to the alphanet, and fund your first on-chain account.</p>
+          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
             {["Rust + Cargo", "RISC-V / gRPC", "Thru CLI v0.2.14"].map(m => (
               <span key={m} style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontFamily: "DM Sans", fontSize: "12px", color: "#8a8070", border: "1px solid #D8D2C6", borderRadius: "12px", padding: "4px 12px" }}>
                 <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "#C0392B", display: "inline-block" }} />{m}
@@ -1026,12 +1026,14 @@ function Guides() {
         </div>
 
         {/* OS Switcher */}
-        <div style={{ display: "flex", background: "#E8E2D6", border: "1px solid #D8D2C6", borderRadius: "12px", padding: "3px", marginBottom: "48px", width: "fit-content" }}>
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: "48px" }}>
+        <div style={{ display: "flex", background: "#E8E2D6", border: "1px solid #D8D2C6", borderRadius: "12px", padding: "3px", width: "fit-content" }}>
           {[{ id: "mac", label: "⌘ macOS" }, { id: "win", label: "⊞ Windows" }].map(({ id, label }) => (
             <button key={id} onClick={() => setOs(id)} style={{ padding: "8px 24px", borderRadius: "10px", border: "none", background: os === id ? "#F5F0E8" : "transparent", color: os === id ? "#1a1a1a" : "#8a8070", fontFamily: "DM Sans", fontSize: "13px", fontWeight: "500", cursor: "pointer", transition: "all 0.2s", boxShadow: os === id ? "0 1px 4px rgba(26,26,26,0.08)" : "none" }}>
               {label}
             </button>
           ))}
+        </div>
         </div>
 
         {/* Section label */}
