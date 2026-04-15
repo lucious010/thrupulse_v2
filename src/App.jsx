@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 // ─── PALETTE ─────────────────────────────────────────────────────────────────
-// Cream: #F5F0E8  |  Dark: #1a1a1a  |  Mid: #E8E2D6  |  Red: #C0392B
+// Cream: #ffffff  |  Dark: #1a1a1a  |  Mid: #f0ece6  |  Red: #C0392B
 // Muted: #8a8070  |  Border: #D8D2C6
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
@@ -271,7 +271,7 @@ function Nav({ section, setSection, onBack, showBack }) {
             display: "flex", flexDirection: "column", padding: "28px",
           }}>
             <button onClick={() => setMenuOpen(false)} style={{ background: "none", border: "none", cursor: "pointer", alignSelf: "flex-end", padding: "4px", marginBottom: "40px" }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5F0E8" strokeWidth="2" strokeLinecap="round">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round">
                 <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
               </svg>
             </button>
@@ -279,7 +279,7 @@ function Nav({ section, setSection, onBack, showBack }) {
             {["home", "protocols", "news", "guides"].map(s => (
               <button key={s} onClick={() => handleNav(s)} style={{
                 background: "none", border: "none", borderBottom: "1px solid #2a2a2a",
-                color: section === s ? "#C0392B" : "#F5F0E8",
+                color: section === s ? "#C0392B" : "#ffffff",
                 fontFamily: "DM Sans", fontSize: "22px", fontWeight: "normal",
                 padding: "16px 0", cursor: "pointer", textAlign: "left",
                 textTransform: "capitalize", transition: "color 0.2s",
@@ -310,7 +310,7 @@ function Nav({ section, setSection, onBack, showBack }) {
         {/* Logo */}
         <div style={{ display: "flex", alignItems: "center", gap: "10px", cursor: "pointer" }} onClick={() => showBack ? onBack() : setSection("home")}>
           <div style={{ width: "30px", height: "30px", borderRadius: "12px", background: "#1a1a1a", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <span style={{ color: "#F5F0E8", fontSize: "14px", fontWeight: "900", fontFamily: "DM Sans" }}>T</span>
+            <span style={{ color: "#ffffff", fontSize: "14px", fontWeight: "900", fontFamily: "DM Sans" }}>T</span>
           </div>
           <span style={{ fontFamily: "DM Sans", fontSize: "16px", color: "#1a1a1a", letterSpacing: "-0.01em" }}>
             thru<span style={{ color: "#C0392B" }}>Pulse</span>
@@ -408,7 +408,7 @@ function NewsCarousel({ openPost, setSection }) {
   const tc = TAG_COLORS[item.tag] || {};
 
   return (
-    <div style={{ padding: "80px 48px", background: "#F5F0E8" }}>
+    <div style={{ padding: "80px 48px", background: "#ffffff" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "36px" }}>
           <div>
@@ -434,7 +434,7 @@ function NewsCarousel({ openPost, setSection }) {
               <span style={{ fontFamily: "DM Sans", fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", background: tc.bg, color: tc.text, padding: "3px 10px", borderRadius: "12px" }}>{item.tag}</span>
               <span style={{ fontFamily: "DM Sans", fontSize: "12px", color: "#8a8070" }}>{item.source} · {item.date}</span>
             </div>
-            <h3 style={{ fontFamily: "DM Sans", fontSize: "clamp(22px, 3.5vw, 36px)", fontWeight: "600", color: "#F5F0E8", margin: "0 0 16px", lineHeight: "1.25", letterSpacing: "-0.02em", maxWidth: "700px", textAlign: "left" }}>{item.title}</h3>
+            <h3 style={{ fontFamily: "DM Sans", fontSize: "clamp(22px, 3.5vw, 36px)", fontWeight: "600", color: "#ffffff", margin: "0 0 16px", lineHeight: "1.25", letterSpacing: "-0.02em", maxWidth: "700px", textAlign: "left" }}>{item.title}</h3>
             <p style={{ fontFamily: "DM Sans", fontSize: "15px", color: "#8a8070", lineHeight: "1.7", margin: "0 0 28px", maxWidth: "580px", textAlign: "left" }}>{item.excerpt}</p>
             <span style={{ fontFamily: "DM Sans", fontSize: "13px", color: "#C0392B", letterSpacing: "0.05em", display: "block", textAlign: "left" }}>
               {item.type === "blog" ? "Read article →" : "Read more →"}
@@ -502,7 +502,7 @@ function BlogPost({ item, onBack }) {
   }
 
   return (
-    <div style={{ paddingTop: "80px", minHeight: "100vh", background: "#F5F0E8" }}>
+    <div style={{ paddingTop: "80px", minHeight: "100vh", background: "#ffffff" }}>
       <div style={{ maxWidth: "700px", margin: "0 auto", padding: "60px 40px" }}>
         <div style={{ display: "flex", gap: "10px", alignItems: "center", marginBottom: "28px", flexWrap: "wrap" }}>
           <span style={{ fontFamily: "DM Sans", fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", background: tc.bg, color: tc.text, padding: "3px 10px", borderRadius: "12px" }}>{item.tag}</span>
@@ -514,7 +514,7 @@ function BlogPost({ item, onBack }) {
         {loading ? (
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
             {[100, 88, 95, 72, 80, 60].map((w, i) => (
-              <div key={i} style={{ height: "14px", background: "#E8E2D6", borderRadius: "12px", width: `${w}%`, animation: "shimmer 1.4s ease infinite", animationDelay: `${i * 0.1}s` }} />
+              <div key={i} style={{ height: "14px", background: "#f0ece6", borderRadius: "12px", width: `${w}%`, animation: "shimmer 1.4s ease infinite", animationDelay: `${i * 0.1}s` }} />
             ))}
             <p style={{ fontFamily: "DM Sans", fontSize: "12px", color: "#8a8070", marginTop: "8px", textAlign: "center", letterSpacing: "0.05em" }}>Loading article...</p>
           </div>
@@ -524,7 +524,7 @@ function BlogPost({ item, onBack }) {
 
         {!loading && (
           <div style={{ marginTop: "56px", paddingTop: "32px", borderTop: "1px solid #D8D2C6" }}>
-            <button onClick={onBack} style={{ background: "#1a1a1a", color: "#F5F0E8", fontFamily: "DM Sans", fontSize: "14px", padding: "12px 28px", border: "none", cursor: "pointer", borderRadius: "12px" }}>← Back to News</button>
+            <button onClick={onBack} style={{ background: "#1a1a1a", color: "#ffffff", fontFamily: "DM Sans", fontSize: "14px", padding: "12px 28px", border: "none", cursor: "pointer", borderRadius: "12px" }}>← Back to News</button>
           </div>
         )}
       </div>
@@ -536,14 +536,10 @@ function BlogPost({ item, onBack }) {
 
 function Home({ setSection, openPost }) {
   return (
-    <div style={{ background: "#F5F0E8" }}>
+    <div style={{ background: "#ffffff" }}>
 
       {/* HERO */}
       <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", padding: "80px 48px 0", position: "relative", overflow: "hidden" }}>
-        {/* Big background circles */}
-        <div style={{ position: "absolute", top: "-120px", left: "-120px", width: "500px", height: "500px", borderRadius: "50%", background: "#E8E2D6", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", bottom: "-80px", right: "-80px", width: "320px", height: "320px", borderRadius: "50%", background: "#E8E2D6", pointerEvents: "none" }} />
-        <div style={{ position: "absolute", top: "30%", right: "15%", width: "160px", height: "160px", borderRadius: "50%", background: "#E0D9CE", pointerEvents: "none" }} />
 
         <div style={{ maxWidth: "1100px", margin: "0 auto", position: "relative", zIndex: 1, width: "100%", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
           {/* Eyebrow */}
@@ -562,7 +558,7 @@ function Home({ setSection, openPost }) {
           </p>
 
           <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", justifyContent: "center" }}>
-            <button onClick={() => setSection("protocols")} style={{ background: "#1a1a1a", color: "#F5F0E8", fontFamily: "DM Sans", fontSize: "14px", padding: "14px 32px", border: "none", cursor: "pointer", borderRadius: "12px", transition: "opacity 0.15s" }}
+            <button onClick={() => setSection("protocols")} style={{ background: "#1a1a1a", color: "#ffffff", fontFamily: "DM Sans", fontSize: "14px", padding: "14px 32px", border: "none", cursor: "pointer", borderRadius: "12px", transition: "opacity 0.15s" }}
               onMouseEnter={e => e.currentTarget.style.opacity = "0.8"}
               onMouseLeave={e => e.currentTarget.style.opacity = "1"}
             >Explore Ecosystem →</button>
@@ -575,7 +571,7 @@ function Home({ setSection, openPost }) {
       </div>
 
       {/* STATS STRIP */}
-      <div style={{ borderTop: "1px solid #D8D2C6", borderBottom: "1px solid #D8D2C6", background: "#E8E2D6", borderRadius: "20px", overflow: "hidden" }}>
+      <div style={{ borderTop: "1px solid #D8D2C6", borderBottom: "1px solid #D8D2C6", background: "#f0ece6", borderRadius: "20px", overflow: "hidden" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}>
           {[
             { value: 14.4, prefix: "$", suffix: "M", dec: 1, label: "Total Raised", sub: "Electric Capital + Framework" },
@@ -597,7 +593,7 @@ function Home({ setSection, openPost }) {
       </div>
 
       {/* PILLARS */}
-      <div style={{ padding: "100px 48px", background: "#F5F0E8" }}>
+      <div style={{ padding: "100px 48px", background: "#ffffff" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <Reveal>
             <div style={{ marginBottom: "60px", textAlign: "center" }}>
@@ -613,9 +609,9 @@ function Home({ setSection, openPost }) {
               { n: "04", title: "Open Dev Experience", body: "Any language targeting RISC-V works out of the box. Mainstream adoption starts here." },
             ].map((f, i) => (
               <Reveal key={f.n} delay={i * 60}>
-                <div style={{ background: "#F5F0E8", padding: "36px 32px", position: "relative", transition: "background 0.2s", height: "100%" }}
-                  onMouseEnter={e => e.currentTarget.style.background = "#EDE8DF"}
-                  onMouseLeave={e => e.currentTarget.style.background = "#F5F0E8"}
+                <div style={{ background: "#ffffff", padding: "36px 32px", position: "relative", transition: "background 0.2s", height: "100%" }}
+                  onMouseEnter={e => e.currentTarget.style.background = "#f5f2ee"}
+                  onMouseLeave={e => e.currentTarget.style.background = "#ffffff"}
                 >
                   <span style={{ position: "absolute", top: "20px", right: "24px", fontFamily: "DM Sans", fontSize: "11px", color: "#D8D2C6", letterSpacing: "0.05em" }}>{f.n}</span>
                   <h3 style={{ fontFamily: "DM Sans", fontSize: "18px", fontWeight: "normal", color: "#1a1a1a", margin: "0 0 12px", letterSpacing: "-0.01em" }}>{f.title}</h3>
@@ -628,11 +624,11 @@ function Home({ setSection, openPost }) {
       </div>
 
       {/* MANIFESTO */}
-      <div style={{ background: "#F5F0E8", padding: "0 48px" }}>
+      <div style={{ background: "#ffffff", padding: "0 48px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 0 60px" }}>
           <div style={{ background: "#1a1a1a", borderRadius: "24px", padding: "80px 64px", textAlign: "center" }}>
             <Reveal>
-              <p style={{ fontFamily: "DM Sans", fontSize: "clamp(20px, 3.5vw, 32px)", fontWeight: "normal", color: "#F5F0E8", lineHeight: "1.6", maxWidth: "760px", margin: "0 auto 24px", letterSpacing: "-0.02em" }}>
+              <p style={{ fontFamily: "DM Sans", fontSize: "clamp(20px, 3.5vw, 32px)", fontWeight: "normal", color: "#ffffff", lineHeight: "1.6", maxWidth: "760px", margin: "0 auto 24px", letterSpacing: "-0.02em" }}>
                 "The crypto dark ages were built on isolation, distrust, and speculation. We're building for{" "}
                 <span style={{ color: "#C0392B" }}>trust, utility, and scale.</span>"
               </p>
@@ -643,7 +639,7 @@ function Home({ setSection, openPost }) {
       </div>
 
       {/* LIVE PROTOCOLS */}
-      <div style={{ padding: "100px 48px 0", background: "#F5F0E8" }}>
+      <div style={{ padding: "100px 48px 0", background: "#ffffff" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
           <Reveal>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px", flexWrap: "wrap", gap: "16px" }}>
@@ -657,11 +653,11 @@ function Home({ setSection, openPost }) {
 
           {/* Logo grid */}
           <Reveal>
-            <div style={{ background: "#fff", borderRadius: "24px", border: "1px solid #E8E2D6", padding: "48px 40px" }}>
+            <div style={{ background: "#fff", borderRadius: "24px", border: "1px solid #f0ece6", padding: "48px 40px" }}>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "0px" }}>
                 {DAPPS.map((dapp, i) => (
                   <a key={dapp.name} href={dapp.url} target="_blank" rel="noreferrer" style={{ textDecoration: "none", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "40px 24px", borderRight: i % 2 === 0 ? "1px solid #F0EBE3" : "none", borderBottom: i < DAPPS.length - 2 ? "1px solid #F0EBE3" : "none", transition: "background 0.15s", borderRadius: i === 0 ? "16px 0 0 0" : i === 1 ? "0 16px 0 0" : i === DAPPS.length - 2 ? "0 0 0 16px" : i === DAPPS.length - 1 ? "0 0 16px 0" : "0" }}
-                    onMouseEnter={e => e.currentTarget.style.background = "#F5F0E8"}
+                    onMouseEnter={e => e.currentTarget.style.background = "#ffffff"}
                     onMouseLeave={e => e.currentTarget.style.background = "transparent"}
                   >
                     <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
@@ -683,7 +679,7 @@ function Home({ setSection, openPost }) {
       <NewsCarousel openPost={openPost} setSection={setSection} />
 
       {/* CTA */}
-      <div style={{ padding: "0 48px 100px", background: "#F5F0E8" }}>
+      <div style={{ padding: "0 48px 100px", background: "#ffffff" }}>
         <Reveal>
           <div style={{ maxWidth: "680px", margin: "0 auto", textAlign: "center", border: "1px solid #D8D2C6", borderRadius: "24px", padding: "60px 40px" }}>
             <h2 style={{ fontFamily: "DM Sans", fontSize: "30px", fontWeight: "normal", color: "#1a1a1a", letterSpacing: "-0.02em", margin: "0 0 14px" }}>Ready to build on Thru?</h2>
@@ -693,9 +689,9 @@ function Home({ setSection, openPost }) {
               onMouseEnter={e => { e.currentTarget.style.background = "#2a2a2a"; e.currentTarget.querySelector(".arrow-box").style.transform = "translateX(4px)"; }}
               onMouseLeave={e => { e.currentTarget.style.background = "#1a1a1a"; e.currentTarget.querySelector(".arrow-box").style.transform = "translateX(0)"; }}
             >
-              <span style={{ fontFamily: "DM Sans", fontSize: "14px", fontWeight: "600", color: "#F5F0E8", letterSpacing: "0.02em" }}>Read the Docs</span>
+              <span style={{ fontFamily: "DM Sans", fontSize: "14px", fontWeight: "600", color: "#ffffff", letterSpacing: "0.02em" }}>Read the Docs</span>
               <div className="arrow-box" style={{ width: "36px", height: "36px", borderRadius: "100px", background: "#3a3a3a", display: "flex", alignItems: "center", justifyContent: "center", transition: "transform 0.2s ease" }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F5F0E8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </div>
@@ -711,7 +707,7 @@ function Home({ setSection, openPost }) {
 
 function Protocols() {
   return (
-    <div style={{ paddingTop: "80px", minHeight: "100vh", background: "#F5F0E8" }}>
+    <div style={{ paddingTop: "80px", minHeight: "100vh", background: "#ffffff" }}>
       <div style={{ maxWidth: "900px", margin: "0 auto", padding: "60px 48px" }}>
         <Reveal>
           <div style={{ marginBottom: "56px" }}>
@@ -727,12 +723,12 @@ function Protocols() {
             return (
               <Reveal key={dapp.name} delay={i * 60}>
                 <a href={dapp.url} target="_blank" rel="noreferrer" style={{ textDecoration: "none", display: "block" }}>
-                  <div style={{ background: "#F5F0E8", padding: "32px 36px", display: "flex", gap: "24px", alignItems: "flex-start", transition: "background 0.2s" }}
-                    onMouseEnter={e => e.currentTarget.style.background = "#EDE8DF"}
-                    onMouseLeave={e => e.currentTarget.style.background = "#F5F0E8"}
+                  <div style={{ background: "#ffffff", padding: "32px 36px", display: "flex", gap: "24px", alignItems: "flex-start", transition: "background 0.2s" }}
+                    onMouseEnter={e => e.currentTarget.style.background = "#f5f2ee"}
+                    onMouseLeave={e => e.currentTarget.style.background = "#ffffff"}
                   >
                     <div style={{ width: "48px", height: "48px", borderRadius: "12px", flexShrink: 0, background: "#1a1a1a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "22px" }}>
-                      {dapp.logo ? (typeof dapp.logo === "string" && dapp.logo.startsWith("img:") ? <img src={dapp.logo.slice(4)} alt={dapp.name} style={{ width: "40px", height: "40px", objectFit: "contain", borderRadius: "50%" }} /> : <span style={{ color: "#F5F0E8" }}>{dapp.logo}</span>) : <span style={{ fontFamily: "DM Sans", fontWeight: "bold", fontSize: "12px", color: "#F5F0E8" }}>KEA</span>}
+                      {dapp.logo ? (typeof dapp.logo === "string" && dapp.logo.startsWith("img:") ? <img src={dapp.logo.slice(4)} alt={dapp.name} style={{ width: "40px", height: "40px", objectFit: "contain", borderRadius: "50%" }} /> : <span style={{ color: "#ffffff" }}>{dapp.logo}</span>) : <span style={{ fontFamily: "DM Sans", fontWeight: "bold", fontSize: "12px", color: "#ffffff" }}>KEA</span>}
                     </div>
                     <div style={{ flex: 1 }}>
                       <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "6px", flexWrap: "wrap" }}>
@@ -756,7 +752,7 @@ function Protocols() {
         </div>
 
         <Reveal delay={200}>
-          <div style={{ marginTop: "12px", background: "#E8E2D6", border: "1px solid #D8D2C6", borderRadius: "20px", padding: "36px", textAlign: "center" }}>
+          <div style={{ marginTop: "12px", background: "#f0ece6", border: "1px solid #D8D2C6", borderRadius: "20px", padding: "36px", textAlign: "center" }}>
             <h3 style={{ fontFamily: "DM Sans", fontSize: "17px", fontWeight: "normal", color: "#1a1a1a", margin: "0 0 8px" }}>More protocols coming</h3>
             <p style={{ fontFamily: "DM Sans", fontSize: "13px", color: "#8a8070", margin: "0 0 12px" }}>The Thru ecosystem is early. As new protocols launch we'll add them here.</p>
             <a href="https://x.com/Thru_pulse" target="_blank" rel="noreferrer" style={{ fontFamily: "DM Sans", fontSize: "12px", color: "#C0392B", textDecoration: "none" }}>Follow @thruPulse for updates →</a>
@@ -774,7 +770,7 @@ function News({ openPost }) {
   const filtered = tag === "All" ? NEWS : NEWS.filter(n => n.tag === tag);
 
   return (
-    <div style={{ paddingTop: "80px", minHeight: "100vh", background: "#F5F0E8" }}>
+    <div style={{ paddingTop: "80px", minHeight: "100vh", background: "#ffffff" }}>
       <div style={{ maxWidth: "860px", margin: "0 auto", padding: "60px 48px" }}>
         <Reveal>
           <div style={{ marginBottom: "48px" }}>
@@ -789,7 +785,7 @@ function News({ openPost }) {
           {NEWS_TAGS.map(t => (
             <button key={t} onClick={() => setTag(t)} style={{
               background: tag === t ? "#1a1a1a" : "transparent",
-              color: tag === t ? "#F5F0E8" : "#8a8070",
+              color: tag === t ? "#ffffff" : "#8a8070",
               border: "1px solid", borderColor: tag === t ? "#1a1a1a" : "#D8D2C6",
               fontFamily: "DM Sans", fontSize: "11px", letterSpacing: "0.05em",
               padding: "6px 14px", borderRadius: "12px", cursor: "pointer", transition: "all 0.15s",
@@ -803,10 +799,10 @@ function News({ openPost }) {
             const tc = TAG_COLORS[item.tag] || {};
             return (
               <Reveal key={item.id} delay={i * 50}>
-                <div style={{ background: "#F5F0E8", padding: "28px 32px", display: "flex", gap: "20px", alignItems: "flex-start", cursor: "pointer", transition: "background 0.2s" }}
+                <div style={{ background: "#ffffff", padding: "28px 32px", display: "flex", gap: "20px", alignItems: "flex-start", cursor: "pointer", transition: "background 0.2s" }}
                   onClick={() => item.type === "blog" ? openPost(item) : window.open(item.url, "_blank")}
-                  onMouseEnter={e => e.currentTarget.style.background = "#EDE8DF"}
-                  onMouseLeave={e => e.currentTarget.style.background = "#F5F0E8"}
+                  onMouseEnter={e => e.currentTarget.style.background = "#f5f2ee"}
+                  onMouseLeave={e => e.currentTarget.style.background = "#ffffff"}
                 >
                   <div style={{ flex: 1 }}>
                     <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "10px", flexWrap: "wrap" }}>
@@ -828,6 +824,7 @@ function News({ openPost }) {
   );
 }
 
+
 // ─── GUIDES ──────────────────────────────────────────────────────────────────
 
 function Guides() {
@@ -836,7 +833,7 @@ function Guides() {
   const CodeBlock = ({ label, children }) => (
     <div style={{ background: "#1a1a1a", border: "1px solid #2a2a2a", borderRadius: "12px", overflow: "hidden", margin: "16px 0" }}>
       <div style={{ padding: "8px 16px", fontSize: "10px", color: "#8a8070", borderBottom: "1px solid #2a2a2a", letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "monospace" }}>{label}</div>
-      <pre style={{ padding: "16px 20px", fontSize: "13px", lineHeight: "1.7", overflowX: "auto", color: "#E8E2D6", fontFamily: "monospace", whiteSpace: "pre-wrap" }}>{children}</pre>
+      <pre style={{ padding: "16px 20px", fontSize: "13px", lineHeight: "1.7", overflowX: "auto", color: "#f0ece6", fontFamily: "monospace", whiteSpace: "pre-wrap" }}>{children}</pre>
     </div>
   );
 
@@ -856,20 +853,20 @@ function Guides() {
   };
 
   const Output = ({ label, children }) => (
-    <div style={{ background: "#E8E2D6", border: "1px solid #D8D2C6", borderRadius: "12px", padding: "16px 20px", margin: "12px 0" }}>
+    <div style={{ background: "#f0ece6", border: "1px solid #D8D2C6", borderRadius: "12px", padding: "16px 20px", margin: "12px 0" }}>
       <div style={{ fontSize: "10px", color: "#8a8070", fontFamily: "monospace", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "10px" }}>{label}</div>
       <pre style={{ padding: 0, fontSize: "13px", color: "#1a1a1a", fontFamily: "monospace", whiteSpace: "pre-wrap" }}>{children}</pre>
     </div>
   );
 
   const Ic = ({ children }) => (
-    <code style={{ background: "#E8E2D6", padding: "2px 8px", borderRadius: "6px", fontSize: "12px", fontFamily: "monospace", color: "#1a1a1a", border: "1px solid #D8D2C6" }}>{children}</code>
+    <code style={{ background: "#f0ece6", padding: "2px 8px", borderRadius: "6px", fontSize: "12px", fontFamily: "monospace", color: "#1a1a1a", border: "1px solid #D8D2C6" }}>{children}</code>
   );
 
   const Step = ({ num, tag, title, children }) => (
     <div style={{ display: "grid", gridTemplateColumns: "48px 1fr", gap: "0 28px", paddingBottom: "52px" }}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-        <div style={{ width: "48px", height: "48px", borderRadius: "12px", background: "#1a1a1a", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "DM Sans", fontWeight: "700", fontSize: "14px", color: "#F5F0E8", flexShrink: 0 }}>{num}</div>
+        <div style={{ width: "48px", height: "48px", borderRadius: "12px", background: "#1a1a1a", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "DM Sans", fontWeight: "700", fontSize: "14px", color: "#ffffff", flexShrink: 0 }}>{num}</div>
         <div style={{ width: "1px", flex: 1, background: "linear-gradient(to bottom, #D8D2C6, transparent)", marginTop: "8px", minHeight: "40px" }} />
       </div>
       <div style={{ paddingTop: "10px" }}>
@@ -1008,7 +1005,7 @@ function Guides() {
   );
 
   return (
-    <div style={{ paddingTop: "80px", minHeight: "100vh", background: "#F5F0E8" }}>
+    <div style={{ paddingTop: "80px", minHeight: "100vh", background: "#ffffff" }}>
       <div style={{ maxWidth: "860px", margin: "0 auto", padding: "60px 48px 120px" }}>
 
         {/* Header */}
@@ -1027,9 +1024,9 @@ function Guides() {
 
         {/* OS Switcher */}
         <div style={{ display: "flex", justifyContent: "center", marginBottom: "48px" }}>
-        <div style={{ display: "flex", background: "#E8E2D6", border: "1px solid #D8D2C6", borderRadius: "12px", padding: "3px", width: "fit-content" }}>
+        <div style={{ display: "flex", background: "#f0ece6", border: "1px solid #D8D2C6", borderRadius: "12px", padding: "3px", width: "fit-content" }}>
           {[{ id: "mac", label: "⌘ macOS" }, { id: "win", label: "⊞ Windows" }].map(({ id, label }) => (
-            <button key={id} onClick={() => setOs(id)} style={{ padding: "8px 24px", borderRadius: "10px", border: "none", background: os === id ? "#F5F0E8" : "transparent", color: os === id ? "#1a1a1a" : "#8a8070", fontFamily: "DM Sans", fontSize: "13px", fontWeight: "500", cursor: "pointer", transition: "all 0.2s", boxShadow: os === id ? "0 1px 4px rgba(26,26,26,0.08)" : "none" }}>
+            <button key={id} onClick={() => setOs(id)} style={{ padding: "8px 24px", borderRadius: "10px", border: "none", background: os === id ? "#ffffff" : "transparent", color: os === id ? "#1a1a1a" : "#8a8070", fontFamily: "DM Sans", fontSize: "13px", fontWeight: "500", cursor: "pointer", transition: "all 0.2s", boxShadow: os === id ? "0 1px 4px rgba(26,26,26,0.08)" : "none" }}>
               {label}
             </button>
           ))}
@@ -1047,7 +1044,7 @@ function Guides() {
         </div>
 
         {/* Checklist */}
-        <div style={{ marginTop: "72px", background: "#fff", border: "1px solid #E8E2D6", borderRadius: "20px", padding: "40px" }}>
+        <div style={{ marginTop: "72px", background: "#fff", border: "1px solid #f0ece6", borderRadius: "20px", padding: "40px" }}>
           <h3 style={{ fontFamily: "DM Sans", fontSize: "20px", fontWeight: "600", marginBottom: "24px", color: "#1a1a1a", letterSpacing: "-0.02em" }}>Setup checklist</h3>
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
             {["Rust & Cargo installed via rustup", "Buf CLI installed (correct architecture)", "Thru CLI v0.2.14 installed via cargo", "RISC-V toolchain installed", "C SDK installed", "Connected to alphanet RPC endpoint", "Keypair generated and stored locally", "On-chain account created", "Faucet tokens claimed"].map(item => (
@@ -1060,7 +1057,7 @@ function Guides() {
         </div>
 
         {/* Tip box */}
-        <div style={{ marginTop: "24px", padding: "28px 32px", background: "#F5F0E8", border: "1px solid #D8D2C6", borderRadius: "20px", borderLeft: "3px solid #1a1a1a" }}>
+        <div style={{ marginTop: "24px", padding: "28px 32px", background: "#ffffff", border: "1px solid #D8D2C6", borderRadius: "20px", borderLeft: "3px solid #1a1a1a" }}>
           <h4 style={{ fontFamily: "DM Sans", fontSize: "16px", fontWeight: "600", marginBottom: "8px", color: "#1a1a1a" }}>Keeping your CLI up to date</h4>
           <p style={{ fontSize: "14px", color: "#8a8070", lineHeight: "1.7", marginBottom: "12px", fontFamily: "DM Sans" }}>When a new version is released, update with:</p>
           <CodeBlock label="terminal / powershell">{`cargo install thru --force`}</CodeBlock>
@@ -1087,10 +1084,10 @@ export default function App() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        body, #root { background: #F5F0E8; min-height: 100vh; color: #1a1a1a; }
+        body, #root { background: #ffffff; min-height: 100vh; color: #1a1a1a; }
         @keyframes shimmer { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
         ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: #F5F0E8; }
+        ::-webkit-scrollbar-track { background: #ffffff; }
         ::-webkit-scrollbar-thumb { background: #D8D2C6; border-radius: 2px; }
         @media (max-width: 768px) { .desktop-nav { display: none !important; } .mobile-nav { display: inline-flex !important; } }
       `}</style>
@@ -1113,7 +1110,302 @@ export default function App() {
         </>
       )}
 
-      <footer style={{ borderTop: "1px solid #D8D2C6", padding: "24px 48px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px", background: "#E8E2D6" }}>
+      <footer style={{ borderTop: "1px solid #D8D2C6", padding: "24px 48px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px", background: "#f0ece6" }}>
+        <span style={{ fontFamily: "DM Sans", fontSize: "12px", color: "#8a8070" }}>© 2026 thruPulse</span>
+        <div style={{ display: "flex", gap: "24px" }}>
+          {[{ l: "thru.xyz", u: "https://thru.xyz" }, { l: "thruPulse", u: "https://x.com/Thru_pulse" }, { l: "Unto Labs", u: "https://untolabs.com" }].map(x => (
+            <a key={x.l} href={x.u} target="_blank" rel="noreferrer" style={{ fontFamily: "DM Sans", fontSize: "12px", color: "#8a8070", textDecoration: "none" }}>{x.l}</a>
+          ))}
+        </div>
+      </footer>
+    </>
+  );
+}// ─── GUIDES ──────────────────────────────────────────────────────────────────
+
+function Guides() {
+  const [os, setOs] = useState("mac");
+
+  const CodeBlock = ({ label, children }) => (
+    <div style={{ background: "#1a1a1a", border: "1px solid #2a2a2a", borderRadius: "12px", overflow: "hidden", margin: "16px 0" }}>
+      <div style={{ padding: "8px 16px", fontSize: "10px", color: "#8a8070", borderBottom: "1px solid #2a2a2a", letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "monospace" }}>{label}</div>
+      <pre style={{ padding: "16px 20px", fontSize: "13px", lineHeight: "1.7", overflowX: "auto", color: "#f0ece6", fontFamily: "monospace", whiteSpace: "pre-wrap" }}>{children}</pre>
+    </div>
+  );
+
+  const Alert = ({ type, children }) => {
+    const styles = {
+      warn:    { background: "#fef9ec", border: "1px solid #f0d88a", color: "#92400e" },
+      info:    { background: "#F0EEFF", border: "1px solid #D8D0FF", color: "#4c3d99" },
+      success: { background: "#edfaf4", border: "1px solid #9be5c0", color: "#065f46" },
+    }[type];
+    const icon = { warn: "⚠", info: "ℹ", success: "✓" }[type];
+    return (
+      <div style={{ borderRadius: "12px", padding: "14px 18px", margin: "16px 0", display: "flex", gap: "12px", alignItems: "flex-start", ...styles }}>
+        <span style={{ fontSize: "14px", flexShrink: 0, marginTop: "1px" }}>{icon}</span>
+        <p style={{ color: "inherit", margin: 0, fontSize: "14px", lineHeight: "1.65" }}>{children}</p>
+      </div>
+    );
+  };
+
+  const Output = ({ label, children }) => (
+    <div style={{ background: "#f0ece6", border: "1px solid #D8D2C6", borderRadius: "12px", padding: "16px 20px", margin: "12px 0" }}>
+      <div style={{ fontSize: "10px", color: "#8a8070", fontFamily: "monospace", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "10px" }}>{label}</div>
+      <pre style={{ padding: 0, fontSize: "13px", color: "#1a1a1a", fontFamily: "monospace", whiteSpace: "pre-wrap" }}>{children}</pre>
+    </div>
+  );
+
+  const Ic = ({ children }) => (
+    <code style={{ background: "#f0ece6", padding: "2px 8px", borderRadius: "6px", fontSize: "12px", fontFamily: "monospace", color: "#1a1a1a", border: "1px solid #D8D2C6" }}>{children}</code>
+  );
+
+  const Step = ({ num, tag, title, children }) => (
+    <div style={{ display: "grid", gridTemplateColumns: "48px 1fr", gap: "0 28px", paddingBottom: "52px" }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <div style={{ width: "48px", height: "48px", borderRadius: "12px", background: "#1a1a1a", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "DM Sans", fontWeight: "700", fontSize: "14px", color: "#ffffff", flexShrink: 0 }}>{num}</div>
+        <div style={{ width: "1px", flex: 1, background: "linear-gradient(to bottom, #D8D2C6, transparent)", marginTop: "8px", minHeight: "40px" }} />
+      </div>
+      <div style={{ paddingTop: "10px" }}>
+        <span style={{ display: "inline-block", fontSize: "10px", fontFamily: "monospace", color: "#C0392B", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "6px" }}>{tag}</span>
+        <h2 style={{ fontFamily: "DM Sans", fontSize: "20px", fontWeight: "600", letterSpacing: "-0.02em", marginBottom: "10px", color: "#1a1a1a" }}>{title}</h2>
+        {children}
+      </div>
+    </div>
+  );
+
+  const macSteps = (
+    <>
+      <Step num="01" tag="prerequisite" title="Install Rust via rustup">
+        <p style={{ color: "#8a8070", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Thru CLI is built in Rust. Install the Rust toolchain using the official installer:</p>
+        <CodeBlock label="terminal">{`curl --proto '=https' --tlsv1.2 -sSf \\\n  https://sh.rustup.rs | sh`}</CodeBlock>
+        <p style={{ color: "#8a8070", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>When prompted, press <Ic>1</Ic> then Enter. Then activate the toolchain:</p>
+        <CodeBlock label="terminal">{`source $HOME/.cargo/env`}</CodeBlock>
+        <CodeBlock label="terminal">{`cargo --version`}</CodeBlock>
+        <Output label="expected output">{`cargo 1.94.1 (29ea6fb6a 2026-03-24)`}</Output>
+      </Step>
+
+      <Step num="02" tag="prerequisite" title="Install the Buf CLI">
+        <p style={{ color: "#8a8070", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Buf is required for gRPC client support. On Apple Silicon use the <Ic>aarch64</Ic> binary:</p>
+        <CodeBlock label="terminal">{`sudo curl -sSL \\\n  "https://github.com/bufbuild/buf/releases/latest/download/buf-Linux-aarch64" \\\n  -o /usr/local/bin/buf\n\nsudo chmod +x /usr/local/bin/buf\n/usr/local/bin/buf --version`}</CodeBlock>
+        <Output label="expected output">{`1.67.0`}</Output>
+        <Alert type="warn">Using the <Ic>x86_64</Ic> binary on Apple Silicon will throw an "Exec format error". Always use the <Ic>aarch64</Ic> build on M-series Macs.</Alert>
+      </Step>
+
+      <Step num="03" tag="install" title="Install the Thru CLI">
+        <p style={{ color: "#8a8070", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>First install OpenSSL via Homebrew:</p>
+        <CodeBlock label="terminal">{`brew install openssl\n\necho 'export OPENSSL_DIR=$(brew --prefix openssl)' >> ~/.zshrc\necho 'export OPENSSL_INCLUDE_DIR=$(brew --prefix openssl)/include' >> ~/.zshrc\necho 'export OPENSSL_LIB_DIR=$(brew --prefix openssl)/lib' >> ~/.zshrc\nsource ~/.zshrc`}</CodeBlock>
+        <p style={{ color: "#8a8070", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Then install the Thru CLI:</p>
+        <CodeBlock label="terminal">{`cargo install thru`}</CodeBlock>
+        <Alert type="info">This compiles from source and may take 4–25 minutes. Let it run to completion.</Alert>
+        <CodeBlock label="terminal">{`thru --help`}</CodeBlock>
+      </Step>
+
+      <Step num="04" tag="setup" title="Install the toolchain and C SDK">
+        <p style={{ color: "#8a8070", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Install the RISC-V toolchain and C SDK:</p>
+        <CodeBlock label="terminal">{`# Install RISC-V toolchain\nthru dev toolchain install\n\n# Install C SDK\nthru dev sdk install c`}</CodeBlock>
+        <Output label="installed paths">{`~/.thru/sdk/toolchain/\n~/.thru/sdk/c/`}</Output>
+      </Step>
+
+      <Step num="05" tag="network" title="Connect to the alphanet">
+        <p style={{ color: "#8a8070", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Verify your CLI can reach the Thru network:</p>
+        <CodeBlock label="terminal">{`thru --json getversion`}</CodeBlock>
+        <Output label="expected output">{`{\n  "getversion": {\n    "status": "success",\n    "thru-node": "0.3.0-dev"\n  }\n}`}</Output>
+        <p style={{ color: "#8a8070", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>If needed, set the RPC endpoint in <Ic>~/.thru/cli/config.yaml</Ic>:</p>
+        <CodeBlock label="config.yaml">{`rpc_base_url: https://grpc.alphanet.thruput.org`}</CodeBlock>
+        <Alert type="info">Always run <Ic>thru --json getversion</Ic> before submitting transactions.</Alert>
+      </Step>
+
+      <Step num="06" tag="identity" title="Generate a keypair">
+        <p style={{ color: "#8a8070", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Generate a keypair to sign your transactions:</p>
+        <CodeBlock label="terminal">{`thru keys generate default`}</CodeBlock>
+        <Alert type="warn">Your private key is stored as plaintext in <Ic>~/.thru/cli/config.yaml</Ic>. Never share this file.</Alert>
+        <CodeBlock label="terminal">{`thru keys generate --overwrite default`}</CodeBlock>
+      </Step>
+
+      <Step num="07" tag="on-chain" title="Create your account">
+        <p style={{ color: "#8a8070", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Confirm the network is up, then create your account:</p>
+        <CodeBlock label="terminal">{`# 1. Confirm network is up\nthru --json getversion\n\n# 2. Create account\nthru account create default`}</CodeBlock>
+        <Output label="expected output">{`Info: Creating account with fee payer proof...\nSuccess: State proof created successfully\nInfo: Signing transaction...\nInfo: Submitting transaction...\n  Status: success`}</Output>
+        <Alert type="warn">The alphanet may return timeout errors — this is normal. Keep retrying.</Alert>
+      </Step>
+
+      <Step num="08" tag="funding" title="Claim faucet tokens">
+        <p style={{ color: "#8a8070", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Withdraw up to 10,000 tokens per transaction:</p>
+        <CodeBlock label="terminal">{`thru faucet withdraw default 10000`}</CodeBlock>
+        <Output label="expected output">{`Withdrew 10000 tokens from faucet to default`}</Output>
+        <CodeBlock label="terminal">{`thru getbalance default`}</CodeBlock>
+        <Alert type="success">You are fully set up on the Thru alphanet. You can now deploy programs and interact with the RISC-V chain.</Alert>
+      </Step>
+    </>
+  );
+
+  const winSteps = (
+    <>
+      <Step num="01" tag="prerequisite" title="Install Rust via rustup">
+        <p style={{ color: "#8a8070", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Download the Windows installer from <Ic>rustup.rs</Ic> and run <Ic>rustup-init.exe</Ic>.</p>
+        <Alert type="info">During setup you may be prompted to install Visual Studio C++ Build Tools. Accept this — it is required to compile Rust programs on Windows.</Alert>
+        <p style={{ color: "#8a8070", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>After installation, open a new PowerShell window and verify:</p>
+        <CodeBlock label="powershell">{`cargo --version`}</CodeBlock>
+        <Output label="expected output">{`cargo 1.94.1 (29ea6fb6a 2026-03-24)`}</Output>
+      </Step>
+
+      <Step num="02" tag="prerequisite" title="Install the Buf CLI">
+        <p style={{ color: "#8a8070", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Via Scoop (recommended):</p>
+        <CodeBlock label="powershell">{`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser\nInvoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression\n\nscoop install buf`}</CodeBlock>
+        <p style={{ color: "#8a8070", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Or download manually (run as administrator):</p>
+        <CodeBlock label="powershell (administrator)">{`Invoke-WebRequest \`\n  -Uri "https://github.com/bufbuild/buf/releases/latest/download/buf-Windows-x86_64.exe" \`\n  -OutFile "C:\\Windows\\System32\\buf.exe"`}</CodeBlock>
+        <CodeBlock label="powershell">{`buf --version`}</CodeBlock>
+        <Output label="expected output">{`1.67.0`}</Output>
+      </Step>
+
+      <Step num="03" tag="install" title="Install the Thru CLI">
+        <p style={{ color: "#8a8070", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>First install OpenSSL via vcpkg:</p>
+        <CodeBlock label="powershell">{`git clone https://github.com/microsoft/vcpkg C:\\vcpkg\nC:\\vcpkg\\bootstrap-vcpkg.bat\n\nC:\\vcpkg\\vcpkg install openssl:x64-windows-static\n\n$env:OPENSSL_DIR = "C:\\vcpkg\\installed\\x64-windows-static"\n$env:OPENSSL_STATIC = "1"`}</CodeBlock>
+        <CodeBlock label="powershell">{`cargo install thru`}</CodeBlock>
+        <Alert type="info">This compiles from source and may take 10–30 minutes on Windows. Do not close the terminal.</Alert>
+        <CodeBlock label="powershell">{`thru --help`}</CodeBlock>
+      </Step>
+
+      <Step num="04" tag="setup" title="Install the toolchain and C SDK">
+        <CodeBlock label="powershell">{`thru dev toolchain install\nthru dev sdk install c`}</CodeBlock>
+        <Output label="installed paths">{`%USERPROFILE%\\.thru\\sdk\\toolchain\\\n%USERPROFILE%\\.thru\\sdk\\c\\`}</Output>
+      </Step>
+
+      <Step num="05" tag="network" title="Connect to the alphanet">
+        <CodeBlock label="powershell">{`thru --json getversion`}</CodeBlock>
+        <Output label="expected output">{`{\n  "getversion": {\n    "status": "success",\n    "thru-node": "0.3.0-dev"\n  }\n}`}</Output>
+        <p style={{ color: "#8a8070", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>If needed, edit <Ic>%USERPROFILE%\.thru\cli\config.yaml</Ic>:</p>
+        <CodeBlock label="config.yaml">{`rpc_base_url: https://grpc.alphanet.thruput.org`}</CodeBlock>
+        <Alert type="info">Always confirm <Ic>getversion</Ic> returns success before submitting any transactions.</Alert>
+      </Step>
+
+      <Step num="06" tag="identity" title="Generate a keypair">
+        <CodeBlock label="powershell">{`thru keys generate default`}</CodeBlock>
+        <Alert type="warn">Your private key is stored as plaintext in <Ic>%USERPROFILE%\.thru\cli\config.yaml</Ic>. Never share this file.</Alert>
+        <CodeBlock label="powershell">{`thru keys generate --overwrite default`}</CodeBlock>
+      </Step>
+
+      <Step num="07" tag="on-chain" title="Create your account">
+        <CodeBlock label="powershell">{`# 1. Confirm network is up\nthru --json getversion\n\n# 2. Create account\nthru account create default`}</CodeBlock>
+        <Output label="expected output">{`Info: Creating account with fee payer proof...\nSuccess: State proof created successfully\n  Status: success`}</Output>
+        <Alert type="warn">Timeout errors are common on the alphanet — keep retrying.</Alert>
+      </Step>
+
+      <Step num="08" tag="funding" title="Claim faucet tokens">
+        <CodeBlock label="powershell">{`thru faucet withdraw default 10000`}</CodeBlock>
+        <Output label="expected output">{`Withdrew 10000 tokens from faucet to default`}</Output>
+        <CodeBlock label="powershell">{`thru getbalance default`}</CodeBlock>
+        <Alert type="success">You are fully set up on the Thru alphanet. You can now deploy programs and interact with the RISC-V chain.</Alert>
+      </Step>
+    </>
+  );
+
+  return (
+    <div style={{ paddingTop: "80px", minHeight: "100vh", background: "#ffffff" }}>
+      <div style={{ maxWidth: "860px", margin: "0 auto", padding: "60px 48px 120px" }}>
+
+        {/* Header */}
+        <div style={{ marginBottom: "56px", textAlign: "center" }}>
+          <div style={{ fontFamily: "DM Sans", fontSize: "11px", letterSpacing: "0.15em", color: "#8a8070", textTransform: "uppercase", marginBottom: "12px" }}>Developer Guides</div>
+          <h1 style={{ fontFamily: "DM Sans", fontSize: "40px", fontWeight: "600", color: "#1a1a1a", letterSpacing: "-0.03em", margin: "0 0 12px" }}>Getting Started with Thru</h1>
+          <p style={{ fontFamily: "DM Sans", fontSize: "16px", color: "#8a8070", lineHeight: "1.7", margin: "0 auto 24px", maxWidth: "560px" }}>Install the CLI, connect to the alphanet, and fund your first on-chain account.</p>
+          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
+            {["Rust + Cargo", "RISC-V / gRPC", "Thru CLI v0.2.14"].map(m => (
+              <span key={m} style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontFamily: "DM Sans", fontSize: "12px", color: "#8a8070", border: "1px solid #D8D2C6", borderRadius: "12px", padding: "4px 12px" }}>
+                <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "#C0392B", display: "inline-block" }} />{m}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* OS Switcher */}
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: "48px" }}>
+        <div style={{ display: "flex", background: "#f0ece6", border: "1px solid #D8D2C6", borderRadius: "12px", padding: "3px", width: "fit-content" }}>
+          {[{ id: "mac", label: "⌘ macOS" }, { id: "win", label: "⊞ Windows" }].map(({ id, label }) => (
+            <button key={id} onClick={() => setOs(id)} style={{ padding: "8px 24px", borderRadius: "10px", border: "none", background: os === id ? "#ffffff" : "transparent", color: os === id ? "#1a1a1a" : "#8a8070", fontFamily: "DM Sans", fontSize: "13px", fontWeight: "500", cursor: "pointer", transition: "all 0.2s", boxShadow: os === id ? "0 1px 4px rgba(26,26,26,0.08)" : "none" }}>
+              {label}
+            </button>
+          ))}
+        </div>
+        </div>
+
+        {/* Section label */}
+        <div style={{ fontFamily: "DM Sans", fontSize: "11px", letterSpacing: "0.15em", color: "#8a8070", textTransform: "uppercase", marginBottom: "40px", paddingBottom: "16px", borderBottom: "1px solid #D8D2C6" }}>
+          {os === "mac" ? "macOS — Apple Silicon (aarch64)" : "Windows 10 / 11 — x86_64"}
+        </div>
+
+        {/* Steps */}
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          {os === "mac" ? macSteps : winSteps}
+        </div>
+
+        {/* Checklist */}
+        <div style={{ marginTop: "72px", background: "#fff", border: "1px solid #f0ece6", borderRadius: "20px", padding: "40px" }}>
+          <h3 style={{ fontFamily: "DM Sans", fontSize: "20px", fontWeight: "600", marginBottom: "24px", color: "#1a1a1a", letterSpacing: "-0.02em" }}>Setup checklist</h3>
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            {["Rust & Cargo installed via rustup", "Buf CLI installed (correct architecture)", "Thru CLI v0.2.14 installed via cargo", "RISC-V toolchain installed", "C SDK installed", "Connected to alphanet RPC endpoint", "Keypair generated and stored locally", "On-chain account created", "Faucet tokens claimed"].map(item => (
+              <div key={item} style={{ display: "flex", alignItems: "center", gap: "12px", fontSize: "14px", color: "#8a8070", fontFamily: "DM Sans" }}>
+                <div style={{ width: "20px", height: "20px", borderRadius: "6px", background: "#edfaf4", border: "1px solid #9be5c0", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: "11px", color: "#065f46" }}>✓</div>
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Tip box */}
+        <div style={{ marginTop: "24px", padding: "28px 32px", background: "#ffffff", border: "1px solid #D8D2C6", borderRadius: "20px", borderLeft: "3px solid #1a1a1a" }}>
+          <h4 style={{ fontFamily: "DM Sans", fontSize: "16px", fontWeight: "600", marginBottom: "8px", color: "#1a1a1a" }}>Keeping your CLI up to date</h4>
+          <p style={{ fontSize: "14px", color: "#8a8070", lineHeight: "1.7", marginBottom: "12px", fontFamily: "DM Sans" }}>When a new version is released, update with:</p>
+          <CodeBlock label="terminal / powershell">{`cargo install thru --force`}</CodeBlock>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
+// ─── APP ─────────────────────────────────────────────────────────────────────
+
+export default function App() {
+  const [section, setSection] = useState("home");
+  const [activePost, setActivePost] = useState(null);
+
+  const openPost = (item) => { setActivePost(item); window.scrollTo(0, 0); };
+  const closePost = () => { setActivePost(null); window.scrollTo(0, 0); };
+
+  useEffect(() => { if (!activePost) window.scrollTo(0, 0); }, [section]);
+
+  return (
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body, #root { background: #ffffff; min-height: 100vh; color: #1a1a1a; }
+        @keyframes shimmer { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #ffffff; }
+        ::-webkit-scrollbar-thumb { background: #D8D2C6; border-radius: 2px; }
+        @media (max-width: 768px) { .desktop-nav { display: none !important; } .mobile-nav { display: inline-flex !important; } }
+      `}</style>
+
+      <Nav
+        section={section}
+        setSection={(s) => { setActivePost(null); setSection(s); }}
+        showBack={!!activePost}
+        onBack={closePost}
+      />
+
+      {activePost ? (
+        <BlogPost item={activePost} onBack={closePost} />
+      ) : (
+        <>
+          {section === "home"      && <Home setSection={setSection} openPost={openPost} />}
+          {section === "protocols" && <Protocols />}
+          {section === "news"      && <News openPost={openPost} />}
+          {section === "guides"    && <Guides />}
+        </>
+      )}
+
+      <footer style={{ borderTop: "1px solid #D8D2C6", padding: "24px 48px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px", background: "#f0ece6" }}>
         <span style={{ fontFamily: "DM Sans", fontSize: "12px", color: "#8a8070" }}>© 2026 thruPulse</span>
         <div style={{ display: "flex", gap: "24px" }}>
           {[{ l: "thru.xyz", u: "https://thru.xyz" }, { l: "thruPulse", u: "https://x.com/Thru_pulse" }, { l: "Unto Labs", u: "https://untolabs.com" }].map(x => (
