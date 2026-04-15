@@ -301,7 +301,7 @@ function Nav({ section, setSection, onBack, showBack }) {
       {/* Nav bar */}
       <nav style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 200,
-        background: scrolled ? "rgba(245,240,232,0.96)" : "rgba(245,240,232,0)",
+        background: scrolled ? "rgba(232,237,242,0.96)" : "rgba(232,237,242,0)",
         backdropFilter: scrolled ? "blur(20px)" : "none",
         borderBottom: scrolled ? "1px solid #c8d0da" : "1px solid transparent",
         display: "flex", alignItems: "center", justifyContent: "space-between",
@@ -425,7 +425,7 @@ function NewsCarousel({ openPost, setSection }) {
           onMouseLeave={e => e.currentTarget.style.opacity = "1"}
         >
           {/* Big number watermark */}
-          <div style={{ position: "absolute", top: "-20px", right: "40px", fontFamily: "DM Sans", fontSize: "180px", fontWeight: "900", color: "rgba(245,240,232,0.04)", lineHeight: 1, userSelect: "none" }}>
+          <div style={{ position: "absolute", top: "-20px", right: "40px", fontFamily: "DM Sans", fontSize: "180px", fontWeight: "900", color: "rgba(232,237,242,0.04)", lineHeight: 1, userSelect: "none" }}>
             {String(active + 1).padStart(2, "0")}
           </div>
 
