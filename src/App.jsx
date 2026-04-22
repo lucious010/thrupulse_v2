@@ -829,6 +829,7 @@ function News({ openPost }) {
 
 function Guides() {
   const [os, setOs] = useState("mac");
+  const [guide, setGuide] = useState("setup");
 
   const CodeBlock = ({ label, children }) => (
     <div style={{ background: "#1a1a1a", border: "1px solid #2a2a2a", borderRadius: "12px", overflow: "hidden", margin: "16px 0" }}>
@@ -1009,19 +1010,26 @@ function Guides() {
       <div style={{ maxWidth: "860px", margin: "0 auto", padding: "60px 48px 120px" }}>
 
         {/* Header */}
-        <div style={{ marginBottom: "56px", textAlign: "center" }}>
+        <div style={{ marginBottom: "48px", textAlign: "center" }}>
           <div style={{ fontFamily: "DM Sans", fontSize: "11px", letterSpacing: "0.15em", color: "#7a8a9a", textTransform: "uppercase", marginBottom: "12px" }}>Developer Guides</div>
-          <h1 style={{ fontFamily: "DM Sans", fontSize: "40px", fontWeight: "600", color: "#1a1a1a", letterSpacing: "-0.03em", margin: "0 0 12px" }}>Getting Started with Thru</h1>
-          <p style={{ fontFamily: "DM Sans", fontSize: "16px", color: "#7a8a9a", lineHeight: "1.7", margin: "0 auto 24px", maxWidth: "560px" }}>Install the CLI, connect to the alphanet, and fund your first on-chain account.</p>
-          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
-            {["Rust + Cargo", "RISC-V / gRPC", "Thru CLI v0.2.14"].map(m => (
-              <span key={m} style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontFamily: "DM Sans", fontSize: "12px", color: "#7a8a9a", border: "1px solid #c8d0da", borderRadius: "12px", padding: "4px 12px" }}>
-                <span style={{ width: "4px", height: "4px", borderRadius: "50%", background: "#C0392B", display: "inline-block" }} />{m}
-              </span>
-            ))}
-          </div>
+          <h1 style={{ fontFamily: "DM Sans", fontSize: "40px", fontWeight: "600", color: "#1a1a1a", letterSpacing: "-0.03em", margin: "0 0 12px" }}>
+            {guide === "setup" ? "Getting Started with Thru" : "Build a Token Program on Thru"}
+          </h1>
+          <p style={{ fontFamily: "DM Sans", fontSize: "16px", color: "#7a8a9a", lineHeight: "1.7", margin: "0 auto 24px", maxWidth: "560px" }}>
+            {guide === "setup" ? "Install the CLI, connect to the alphanet, and fund your first on-chain account." : "Write, build and deploy a C token program on the Thru RISC-V blockchain."}
+          </p>
         </div>
 
+        {/* Guide Switcher */}
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: "32px", gap: "12px", flexWrap: "wrap" }}>
+          {[{ id: "setup", label: "01 — Getting Started" }, { id: "token", label: "02 — Token Program" }].map(({ id, label }) => (
+            <button key={id} onClick={() => setGuide(id)} style={{ padding: "10px 24px", borderRadius: "12px", border: guide === id ? "1px solid #1a1a1a" : "1px solid #c8d0da", background: guide === id ? "#1a1a1a" : "transparent", color: guide === id ? "#ffffff" : "#7a8a9a", fontFamily: "DM Sans", fontSize: "13px", fontWeight: "500", cursor: "pointer", transition: "all 0.2s" }}>
+              {label}
+            </button>
+          ))}
+        </div>
+
+        {guide === "setup" && (<>
         {/* OS Switcher */}
         <div style={{ display: "flex", justifyContent: "center", marginBottom: "48px" }}>
         <div style={{ display: "flex", background: "#e4e9ef", border: "1px solid #c8d0da", borderRadius: "12px", padding: "3px", width: "fit-content" }}>
@@ -1062,6 +1070,94 @@ function Guides() {
           <p style={{ fontSize: "14px", color: "#7a8a9a", lineHeight: "1.7", marginBottom: "12px", fontFamily: "DM Sans" }}>When a new version is released, update with:</p>
           <CodeBlock label="terminal / powershell">{`cargo install thru --force`}</CodeBlock>
         </div>
+        </>)}
+
+        {/* Token Program Guide */}
+        {guide === "token" && (<>
+          <div style={{ fontFamily: "DM Sans", fontSize: "11px", letterSpacing: "0.15em", color: "#7a8a9a", textTransform: "uppercase", marginBottom: "40px", paddingBottom: "16px", borderBottom: "1px solid #c8d0da" }}>
+            C Language — RISC-V / ThruVM
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column" }}>
+
+            <Step num="01" tag="prerequisite" title="Make sure you are set up">
+              <p style={{ color: "#7a8a9a", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Before building a token program, make sure you have completed the Getting Started guide — you need the CLI, C SDK, toolchain, and a funded account.</p>
+              <Alert type="info">Run <Ic>thru getbalance default</Ic> to confirm you have tokens. You need at least 1,000 to cover transaction fees.</Alert>
+            </Step>
+
+            <Step num="02" tag="init" title="Initialize a new C project">
+              <p style={{ color: "#7a8a9a", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Create a new project directory for your token program:</p>
+              <CodeBlock label="terminal">{`thru dev init c my-token`}</CodeBlock>
+              <CodeBlock label="terminal">{`cd my-token`}</CodeBlock>
+              <Output label="created files">{`my-token/GNUmakefile
+my-token/README.md
+my-token/examples/hello_world.c`}</Output>
+            </Step>
+
+            <Step num="03" tag="code" title="Write the token program">
+              <p style={{ color: "#7a8a9a", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Open <Ic>examples/hello_world.c</Ic> and replace the contents with a simple token mint program:</p>
+              <CodeBlock label="examples/hello_world.c">{`#include <tn_sdk.h>
+
+void entrypoint(const uint8_t *input, uint64_t input_len) {
+    // Read instruction data
+    if (input_len < 8) {
+        tn_return_error(-1);
+        return;
+    }
+
+    // Read amount from first 8 bytes
+    uint64_t amount = *(uint64_t *)input;
+
+    // Log the mint amount
+    tn_log_uint64(amount);
+
+    // Return success
+    tn_return_success(NULL, 0);
+}`}</CodeBlock>
+              <Alert type="info">This is a minimal example. A full token program would manage balances in state accounts. See the Thru SDK docs at docs.thru.org for advanced usage.</Alert>
+            </Step>
+
+            <Step num="04" tag="build" title="Build the program">
+              <p style={{ color: "#7a8a9a", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Compile your program for the RISC-V ThruVM:</p>
+              <CodeBlock label="terminal">{`make -j`}</CodeBlock>
+              <Output label="expected output">{`build/thruvm/bin/hello_world_c.bin`}</Output>
+              <Alert type="warn">If you see a compiler error, make sure your C SDK and toolchain are up to date: <Ic>thru dev sdk update c</Ic></Alert>
+            </Step>
+
+            <Step num="05" tag="deploy" title="Deploy to the alphanet">
+              <p style={{ color: "#7a8a9a", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>First verify the network is up, then deploy your program:</p>
+              <CodeBlock label="terminal">{`thru --json getversion`}</CodeBlock>
+              <p style={{ color: "#7a8a9a", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Once you see a success response, create a managed program:</p>
+              <CodeBlock label="terminal">{`thru program create default build/thruvm/bin/hello_world_c.bin`}</CodeBlock>
+              <Output label="expected output">{`Success: ✓ Managed program created successfully
+Info: Meta account: taYZCp1f...
+Info: Program account: taN7kZOQ...`}</Output>
+              <Alert type="info">Save your <Ic>Program account</Ic> address — you will need it to execute the program.</Alert>
+            </Step>
+
+            <Step num="06" tag="execute" title="Execute your program">
+              <p style={{ color: "#7a8a9a", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Execute the program with instruction data. Pass a hex-encoded amount (e.g. 1000 tokens):</p>
+              <CodeBlock label="terminal">{`thru txn execute <your-program-account> e803000000000000`}</CodeBlock>
+              <p style={{ color: "#7a8a9a", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Replace <Ic>{`<your-program-account>`}</Ic> with the Program account address from the deploy step.</p>
+              <Alert type="warn">The alphanet may timeout — always run <Ic>thru --json getversion</Ic> first and retry on failure.</Alert>
+            </Step>
+
+            <Step num="07" tag="verify" title="Verify the transaction">
+              <p style={{ color: "#7a8a9a", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Check your transaction using the signature returned from the execute command:</p>
+              <CodeBlock label="terminal">{`thru txn get <transaction-signature>`}</CodeBlock>
+              <p style={{ color: "#7a8a9a", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Or view it on the block explorer:</p>
+              <CodeBlock label="terminal">{`open https://scan.thru.org`}</CodeBlock>
+              <Alert type="success">Your token program is live on the Thru alphanet. You can now iterate on the logic, add state management, and build more complex programs.</Alert>
+            </Step>
+
+          </div>
+
+          {/* Tip box */}
+          <div style={{ marginTop: "48px", padding: "28px 32px", background: "#ffffff", border: "1px solid #c8d0da", borderRadius: "20px", borderLeft: "3px solid #C0392B" }}>
+            <h4 style={{ fontFamily: "DM Sans", fontSize: "16px", fontWeight: "600", marginBottom: "8px", color: "#1a1a1a" }}>Next steps</h4>
+            <p style={{ fontSize: "14px", color: "#7a8a9a", lineHeight: "1.7", fontFamily: "DM Sans" }}>Explore the full Thru C SDK documentation at <a href="https://docs.thru.org" target="_blank" rel="noreferrer" style={{ color: "#C0392B", textDecoration: "none" }}>docs.thru.org</a> to learn about state accounts, cross-program calls, and advanced token logic.</p>
+          </div>
+        </>)}
 
       </div>
     </div>
