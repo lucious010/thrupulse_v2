@@ -1013,16 +1013,16 @@ function Guides() {
         <div style={{ marginBottom: "48px", textAlign: "center" }}>
           <div style={{ fontFamily: "DM Sans", fontSize: "11px", letterSpacing: "0.15em", color: "#7a8a9a", textTransform: "uppercase", marginBottom: "12px" }}>Developer Guides</div>
           <h1 style={{ fontFamily: "DM Sans", fontSize: "40px", fontWeight: "600", color: "#1a1a1a", letterSpacing: "-0.03em", margin: "0 0 12px" }}>
-            {guide === "setup" ? "Getting Started with Thru" : "Build a Token Program on Thru"}
+            {guide === "setup" ? "Getting Started with Thru" : guide === "token" ? "Build a Token Program on Thru" : "Build a Calculator Program on Thru"}
           </h1>
           <p style={{ fontFamily: "DM Sans", fontSize: "16px", color: "#7a8a9a", lineHeight: "1.7", margin: "0 auto 24px", maxWidth: "560px" }}>
-            {guide === "setup" ? "Install the CLI, connect to the alphanet, and fund your first on-chain account." : "Write, build and deploy a C token program on the Thru RISC-V blockchain."}
+            {guide === "setup" ? "Install the CLI, connect to the alphanet, and fund your first on-chain account." : guide === "token" ? "Write, build and deploy a C token program on the Thru RISC-V blockchain." : "Write a C program that reads two numbers from transaction data and adds them on-chain."}
           </p>
         </div>
 
         {/* Guide Switcher */}
         <div style={{ display: "flex", justifyContent: "center", marginBottom: "32px", gap: "12px", flexWrap: "wrap" }}>
-          {[{ id: "setup", label: "01 — Getting Started" }, { id: "token", label: "02 — Token Program" }].map(({ id, label }) => (
+          {[{ id: "setup", label: "01 — Getting Started" }, { id: "token", label: "02 — Token Program" }, { id: "calculator", label: "03 — Calculator Program" }].map(({ id, label }) => (
             <button key={id} onClick={() => setGuide(id)} style={{ padding: "10px 24px", borderRadius: "12px", border: guide === id ? "1px solid #1a1a1a" : "1px solid #c8d0da", background: guide === id ? "#1a1a1a" : "transparent", color: guide === id ? "#ffffff" : "#7a8a9a", fontFamily: "DM Sans", fontSize: "13px", fontWeight: "500", cursor: "pointer", transition: "all 0.2s" }}>
               {label}
             </button>
@@ -1158,6 +1158,133 @@ Info: Program account: taN7kZOQ...`}</Output>
             <p style={{ fontSize: "14px", color: "#7a8a9a", lineHeight: "1.7", fontFamily: "DM Sans" }}>Explore the full Thru C SDK documentation at <a href="https://docs.thru.org" target="_blank" rel="noreferrer" style={{ color: "#C0392B", textDecoration: "none" }}>docs.thru.org</a> to learn about state accounts, cross-program calls, and advanced token logic.</p>
           </div>
         </>)}
+
+        {/* Calculator Program Guide */}
+        {guide === "calculator" && (<>
+          <div style={{ fontFamily: "DM Sans", fontSize: "11px", letterSpacing: "0.15em", color: "#7a8a9a", textTransform: "uppercase", marginBottom: "40px", paddingBottom: "16px", borderBottom: "1px solid #c8d0da" }}>
+            C Language — RISC-V / ThruVM
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column" }}>
+
+            <Step num="01" tag="prerequisite" title="Make sure you are set up">
+              <p style={{ color: "#7a8a9a", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>You need the Thru CLI, C SDK, toolchain, and a funded account before building. Check your balance:</p>
+              <CodeBlock label="terminal">{`thru getbalance default`}</CodeBlock>
+              <Alert type="info">You need at least 1,000 tokens to cover transaction fees for deploying and executing.</Alert>
+            </Step>
+
+            <Step num="02" tag="init" title="Initialize the project">
+              <p style={{ color: "#7a8a9a", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Create a new C project called calculator:</p>
+              <CodeBlock label="terminal">{`cd ~
+thru dev init c calculator
+cd calculator`}</CodeBlock>
+              <Output label="created files">{`calculator/GNUmakefile
+calculator/README.md
+calculator/examples/calculator.c`}</Output>
+            </Step>
+
+            <Step num="03" tag="code" title="Write the calculator program">
+              <p style={{ color: "#7a8a9a", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Open <Ic>examples/calculator.c</Ic> in TextEdit, select all, delete and paste this:</p>
+              <CodeBlock label="examples/calculator.c">{`#include <stdint.h>
+#include "thru-sdk/c/tn_sdk.h"
+
+TSDK_ENTRYPOINT_FN void start(void) {
+    // Get transaction
+    tsdk_txn_t const *txn = tsdk_get_txn();
+
+    // Get instruction data and size
+    uchar const *data = tsdk_txn_get_instr_data(txn);
+    ushort data_sz    = tsdk_txn_get_instr_data_sz(txn);
+
+    // Need at least 16 bytes (two uint64_t numbers)
+    if (data_sz < 16) {
+        tsdk_printf("Error: need 16 bytes, got %u\n", (unsigned)data_sz);
+        tsdk_revert(1);
+    }
+
+    // Read two numbers from instruction data
+    uint64_t a = TSDK_LOAD(uint64_t, data);
+    uint64_t b = TSDK_LOAD(uint64_t, data + 8);
+
+    // Add them
+    uint64_t result = a + b;
+
+    // Log the result
+    tsdk_printf("%llu + %llu = %llu\n",
+        (unsigned long long)a,
+        (unsigned long long)b,
+        (unsigned long long)result);
+
+    // Return success
+    tsdk_return(TSDK_SUCCESS);
+}`}</CodeBlock>
+              <Alert type="info">Key functions used: <Ic>tsdk_txn_get_instr_data()</Ic> reads raw bytes from the transaction, <Ic>TSDK_LOAD()</Ic> safely loads a value from unaligned memory.</Alert>
+            </Step>
+
+            <Step num="04" tag="build" title="Build the program">
+              <p style={{ color: "#7a8a9a", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Compile for the RISC-V ThruVM:</p>
+              <CodeBlock label="terminal">{`make -j`}</CodeBlock>
+              <Output label="expected output">{`build/thruvm/bin/calculator_c.bin`}</Output>
+            </Step>
+
+            <Step num="05" tag="deploy" title="Deploy to the alphanet">
+              <p style={{ color: "#7a8a9a", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Always verify the network first, then deploy with a unique seed:</p>
+              <CodeBlock label="terminal">{`thru --json getversion`}</CodeBlock>
+              <CodeBlock label="terminal">{`thru program create default_calculator build/thruvm/bin/calculator_c.bin`}</CodeBlock>
+              <Output label="expected output">{`Success: Managed program created successfully
+Info: Program account: ta9APXzhZspGb64yfWV9rn_KC8KOnV895ZmdfNbflSPBTH`}</Output>
+              <Alert type="warn">Use a unique seed like <Ic>default_calculator</Ic> — reusing <Ic>default</Ic> causes a meta account conflict with previous deployments.</Alert>
+            </Step>
+
+            <Step num="06" tag="execute" title="Execute the calculator">
+              <p style={{ color: "#7a8a9a", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Pass two numbers as hex-encoded little-endian bytes combined into one instruction string. For example 5 + 3:</p>
+              <CodeBlock label="terminal">{`thru txn execute <program-account> 05000000000000000300000000000000`}</CodeBlock>
+              <p style={{ color: "#7a8a9a", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>Or 100 + 200:</p>
+              <CodeBlock label="terminal">{`thru txn execute <program-account> 6400000000000000c800000000000000`}</CodeBlock>
+              <Alert type="info">Numbers are encoded in little-endian hex. 5 = <Ic>0500000000000000</Ic>, 100 = <Ic>6400000000000000</Ic>, 200 = <Ic>c800000000000000</Ic>. Combine both values with no space.</Alert>
+            </Step>
+
+            <Step num="07" tag="verify" title="Verify the result">
+              <p style={{ color: "#7a8a9a", fontSize: "15px", lineHeight: "1.7", marginBottom: "16px" }}>A successful execution looks like this:</p>
+              <Output label="expected output">{`Success: Transaction executed successfully
+Slot: 4599
+Compute Units Consumed: 9008
+State Units Consumed: 0
+Execution Result: 0
+VM Error: 0 (TN_RUNTIME_TXN_EXECUTE_SUCCESS)`}</Output>
+              <Alert type="success">Your calculator program is live and running on the Thru RISC-V blockchain. You just processed on-chain arithmetic using a C program compiled for ThruVM!</Alert>
+            </Step>
+
+          </div>
+
+          {/* Errors we hit */}
+          <div style={{ marginTop: "48px", background: "#ffffff", border: "1px solid #c8d0da", borderRadius: "20px", padding: "40px" }}>
+            <h3 style={{ fontFamily: "DM Sans", fontSize: "20px", fontWeight: "600", marginBottom: "24px", color: "#1a1a1a", letterSpacing: "-0.02em" }}>Errors we hit & how we fixed them</h3>
+            <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+              {[
+                { error: "tn_sdk.h: No such file or directory", fix: 'Wrong include path. Use #include "thru-sdk/c/tn_sdk.h"' },
+                { error: "unknown type name 'uint8_t'", fix: "Missing types header. Add #include <stdint.h> at the top." },
+                { error: "implicit declaration of function 'tn_state_read'", fix: "Wrong SDK function names. Read the actual SDK header and use tsdk_get_txn(), tsdk_txn_get_instr_data() etc." },
+                { error: "undefined reference to 'start'", fix: "Wrong entrypoint name. Rename to start() and use the TSDK_ENTRYPOINT_FN attribute." },
+                { error: "tsdk_txn_t has no member named instruction_data_len", fix: "Wrong struct fields. Use tsdk_txn_get_instr_data_sz() and tsdk_txn_get_instr_data() helper functions." },
+                { error: "TN_RUNTIME_TXN_ERR_VM_REVERT on deploy", fix: "Meta account conflict from reusing the same seed. Use a unique seed like default_calculator." },
+                { error: "zsh: bad pattern [200~", fix: "Paste mode interference in terminal. Type the command manually instead of pasting." },
+              ].map((item, i) => (
+                <div key={i} style={{ borderRadius: "12px", border: "1px solid #c8d0da", overflow: "hidden" }}>
+                  <div style={{ background: "#fff0f0", padding: "10px 16px", fontFamily: "monospace", fontSize: "12px", color: "#C0392B", borderBottom: "1px solid #c8d0da" }}>{item.error}</div>
+                  <div style={{ background: "#ffffff", padding: "10px 16px", fontFamily: "DM Sans", fontSize: "13px", color: "#7a8a9a" }}>{item.fix}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Tip box */}
+          <div style={{ marginTop: "24px", padding: "28px 32px", background: "#ffffff", border: "1px solid #c8d0da", borderRadius: "20px", borderLeft: "3px solid #C0392B" }}>
+            <h4 style={{ fontFamily: "DM Sans", fontSize: "16px", fontWeight: "600", marginBottom: "8px", color: "#1a1a1a" }}>Next steps</h4>
+            <p style={{ fontSize: "14px", color: "#7a8a9a", lineHeight: "1.7", fontFamily: "DM Sans" }}>Try extending the calculator to support subtraction, multiplication, or division by reading an operation byte from the instruction data. See the full SDK docs at <a href="https://docs.thru.org" target="_blank" rel="noreferrer" style={{ color: "#C0392B", textDecoration: "none" }}>docs.thru.org</a>.</p>
+          </div>
+        </>)}
+
 
       </div>
     </div>
